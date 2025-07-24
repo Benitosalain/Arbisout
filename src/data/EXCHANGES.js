@@ -1,0 +1,127 @@
+export const EXCHANGES = [
+  {
+    name: 'Binance',
+    api: 'https://api.binance.com/api/v3/ticker/price?symbol=',
+    exampleSymbol: 'BTCUSDT',
+  },
+  {
+    name: 'Coinbase',
+    api: 'https://api.pro.coinbase.com/products',
+    exampleSymbol: 'BTC-USD',
+  },
+  {
+    name: 'Kraken',
+    api: 'https://api.kraken.com/0/public/Ticker?pair=',
+    exampleSymbol: 'XXBTZUSD',
+  },
+  {
+    name: 'Bitfinex',
+    api: 'https://api-pub.bitfinex.com/v2/ticker/',
+    exampleSymbol: 'BTCUSD',
+  },
+  {
+    name: 'Huobi',
+    api: 'https://api.huobi.pro/market/detail/merged?symbol=',
+    exampleSymbol: 'btcusdt',
+  },
+  {
+    name: 'OKEx',
+    api: 'https://www.okex.com/api/v5/market/ticker?instId=',
+    exampleSymbol: 'BTC-USDT',
+  },
+  {
+    name: 'Bittrex',
+    api: 'https://api.bittrex.com/v3/markets/',
+    exampleSymbol: 'BTC-USDT',
+  },
+  {
+    name: 'Poloniex',
+    api: 'https://poloniex.com/public?command=returnTicker',
+    exampleSymbol: 'USDT_BTC',
+  },
+  {
+    name: 'Gate.io',
+    api: 'https://api.gate.io/api2/1/tickers',
+    exampleSymbol: 'BTC_USDT',
+  },
+  {
+    name: 'KuCoin',
+    api: 'https://api.kucoin.com/api/v1/market/orderbook/level1?symbol=',
+    exampleSymbol: 'BTC-USDT',
+  },
+  {
+    name: 'Bitstamp',
+    api: 'https://www.bitstamp.net/api/v2/ticker/',
+    exampleSymbol: 'btcusd',
+  },
+  {
+    name: 'Gemini',
+    api: 'https://api.gemini.com/v1/pubticker/',
+    exampleSymbol: 'btcusd',
+  },
+  {
+    name: 'HitBTC',
+    api: 'https://api.hitbtc.com/api/2/public/ticker/',
+    exampleSymbol: 'BTCUSD',
+  },
+  {
+    name: 'CoinEx',
+    api: 'https://api.coinex.com/v1/market/ticker?market=',
+    exampleSymbol: 'BTCUSDT',
+  },
+  {
+    name: 'Bybit',
+    api: 'https://api.bybit.com/v2/public/tickers?symbol=',
+    exampleSymbol: 'BTCUSD',
+  },
+  {
+    name: 'FTX',
+    api: 'https://ftx.com/api/markets',
+    exampleSymbol: 'BTC/USD',
+  },
+  {
+    name: 'Deribit',
+    api: 'https://www.deribit.com/api/v2/public/ticker?instrument_name=',
+    exampleSymbol: 'BTC-PERPETUAL',
+  },
+  {
+    name: 'BitMart',
+    api: 'https://api-cloud.bitmart.com/spot/v1/ticker?symbol=',
+    exampleSymbol: 'BTC_USDT',
+  },
+  {
+    name: 'Liquid',
+    api: 'https://api.liquid.com/products',
+    exampleSymbol: 'BTCUSD',
+  },
+  {
+    name: 'OKCoin',
+    api: 'https://www.okcoin.com/api/spot/v3/instruments/',
+    exampleSymbol: 'BTC-USDT',
+  },
+  {
+    name: 'ZB',
+    api: 'http://api.zb.com/data/v1/ticker?market=',
+    exampleSymbol: 'btc_usdt',
+  },
+  {
+    name: 'WazirX',
+    api: 'https://api.wazirx.com/api/v2/tickers',
+    exampleSymbol: 'btcusdt',
+  },
+  {
+    name: 'BitFlyer',
+    api: 'https://api.bitflyer.com/v1/ticker?product_code=',
+    exampleSymbol: 'BTC_JPY',
+  },
+  {
+    name: 'Upbit',
+    api: 'https://api.upbit.com/v1/ticker?markets=',
+    exampleSymbol: 'KRW-BTC',
+  },
+  {
+    name: 'Coincheck',
+    api: 'https://coincheck.com/api/ticker',
+    exampleSymbol: 'BTC-JPY',
+  },
+];
