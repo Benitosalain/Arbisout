@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Trash2, UserPlus, Loader2 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL;
+const API_BASE = process.env.REACT_APP_API_BASE_URL;
 
 function Dashboard() {
   const [users, setUsers] = useState([]);
