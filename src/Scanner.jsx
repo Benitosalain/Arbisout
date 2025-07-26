@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TrendingUp } from 'lucide-react';
 import { canonicalizeSymbol } from "./utils/symbol-mapping";
-
+const API_BASE = process.env.REACT_APP_API_BASE_URL;
 const STRATEGY_LABELS = {
   cross: "Cross-Exchange",
   inter: "Inter-Asset",
