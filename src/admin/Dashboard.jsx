@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Trash2, UserPlus, Loader2 } from 'lucide-react';
 import { toast } from 'react-hot-toast';
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
 function Dashboard() {
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState({ username: '', password: '', role: 'user' });
@@ -11,7 +13,7 @@ function Dashboard() {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const response = await fetch('/api/users');
+      const response = await fetch(`${API_BASE}/api/users`);
       const data = await response.json();
       setUsers(data);
     } catch (err) {
@@ -28,7 +30,7 @@ function Dashboard() {
     if (!newUser.username || !newUser.password) return toast.error("Please fill all fields");
     setAdding(true);
     try {
-      const res = await fetch('/api/users', {
+      const res = await fetch(`${API_BASE}/api/users`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newUser)
@@ -50,7 +52,7 @@ function Dashboard() {
   const handleDelete = async (username) => {
     if (!window.confirm(`Delete ${username}?`)) return;
     try {
-      const res = await fetch(`/api/users/${username}`, { method: 'DELETE' });
+      const res = await fetch(`${API_BASE}/api/users/${username}`, { method: 'DELETE' });
       const data = await res.json();
       if (res.ok) {
         toast.success("User deleted");
