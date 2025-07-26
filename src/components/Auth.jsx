@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
 function Auth({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +19,7 @@ function Auth({ onLogin }) {
     setError('');
 
     try {
-      const res = await fetch('http://localhost:3000/api/login', {
+      const res = await fetch(`${API_BASE}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
