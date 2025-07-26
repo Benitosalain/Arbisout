@@ -26,7 +26,7 @@ function Scanner() {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch('http://localhost:3000/api/opportunities');
+        const response = await fetch(`${API_BASE}/api/opportunities`);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
 
