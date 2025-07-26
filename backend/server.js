@@ -58,7 +58,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors({
 
-  origin: 'http://localhost:3001',
+  origin: 'https://arbisout.netlify.app',
   credentials: true,
 }));
 app.use(express.json());
