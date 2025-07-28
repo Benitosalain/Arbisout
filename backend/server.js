@@ -216,10 +216,10 @@ async function scanLoop() {
       const prices = await fetchAllPrices();
       latestArbs = {
         cross: crossExchangeArb(prices, 1),
-        inter: interAssetArb(prices, 0.5),
-        triangular: triangularArb(prices, 0.5),
-        stat: statArb(prices, mockHistory, 0.5),
-        funding: fundingArb(prices, mockPerpPrices, mockFundingRates, 2),
+        inter: interAssetArb(prices, 0.3),
+        triangular: triangularArb(prices, 0.1),
+        stat: statArb(prices, mockHistory, 0.1),
+        funding: fundingArb(prices, mockPerpPrices, mockFundingRates, 0.1),
       };
     } catch (err) {
       console.error("🚨 Error in scanning loop:", err.message);
