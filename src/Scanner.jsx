@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { TrendingUp } from 'lucide-react';
 import { canonicalizeSymbol } from "./utils/symbol-mapping";
-const API_BASE = process.env.REACT_APP_API_BASE_URL;
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
 const STRATEGY_LABELS = {
   cross: "Cross-Exchange",
   inter: "Inter-Asset",
@@ -44,7 +46,6 @@ function Scanner() {
           });
         });
 
-        // Remove stale opps older than 30 seconds
         const validRecent = {};
         Object.entries(updatedRecent).forEach(([key, value]) => {
           if (now - value.timestamp < 30000) {
@@ -76,22 +77,19 @@ function Scanner() {
   const isFresh = (op) => {
     const keyHash = JSON.stringify(op);
     const entry = recentOpps[keyHash];
-    if (!entry) return false;
-    // "Fresh" if appeared/updated in the last 3 seconds
-    return Date.now() - entry.timestamp < 3000;
+    return entry && (Date.now() - entry.timestamp < 3000);
   };
 
   const opps = Object.values(recentOpps)
-  .map(o => o.op)
-  .filter(op => {
-    if (strategy === 'cross') return op.buyEx || op.buyExchange;
-    if (strategy === 'inter') return op.exchange;
-    if (strategy === 'triangular') return op.steps;
-    if (strategy === 'stat') return op.pair && op.mean;
-    if (strategy === 'funding') return op.exchange && op.pair && op.fundingRate;
-    return false;
-  });
-
+    .map(o => o.op)
+    .filter(op => {
+      if (strategy === 'cross') return op.buyEx || op.buyExchange;
+      if (strategy === 'inter') return op.exchange;
+      if (strategy === 'triangular') return op.steps;
+      if (strategy === 'stat') return op.pair && op.mean;
+      if (strategy === 'funding') return op.exchange && op.pair && op.fundingRate;
+      return false;
+    });
 
   return (
     <div className="mb-4 bg-gray-900 p-6 rounded-2xl shadow-2xl border border-yellow-500 animate-fade-in">
@@ -107,8 +105,7 @@ function Scanner() {
             className={`px-4 py-2 rounded-xl font-bold transition-all duration-300 border-2
               ${strategy === key
                 ? "bg-yellow-500 text-black border-yellow-400 shadow-md"
-                : "bg-gray-800 text-yellow-300 hover:bg-yellow-500 hover:text-black border-gray-700"}
-            `}
+                : "bg-gray-800 text-yellow-300 hover:bg-yellow-500 hover:text-black border-gray-700"}`}
           >
             {STRATEGY_LABELS[key]}
           </button>
@@ -156,6 +153,30 @@ function Scanner() {
                   <th className="px-4 py-3">Implied</th>
                 </>
               )}
+              {strategy === "triangular" && (
+                <>
+                  <th className="px-4 py-3">Pair</th>
+                  <th className="px-4 py-3">Steps</th>
+                  <th className="px-4 py-3">Profit %</th>
+                </>
+              )}
+              {strategy === "stat" && (
+                <>
+                  <th className="px-4 py-3">Pair</th>
+                  <th className="px-4 py-3">Mean</th>
+                  <th className="px-4 py-3">Std</th>
+                  <th className="px-4 py-3">Latest</th>
+                  <th className="px-4 py-3">Profit %</th>
+                </>
+              )}
+              {strategy === "funding" && (
+                <>
+                  <th className="px-4 py-3">Pair</th>
+                  <th className="px-4 py-3">Exchange</th>
+                  <th className="px-4 py-3">Funding Rate</th>
+                  <th className="px-4 py-3">Profit %</th>
+                </>
+              )}
             </tr>
           </thead>
           <tbody className="divide-y divide-yellow-900">
@@ -184,6 +205,30 @@ function Scanner() {
                     <td className="px-4 py-2 text-green-400">{op.profitPercent}%</td>
                     <td className="px-4 py-2">{op.ethUsdt}</td>
                     <td className="px-4 py-2">{op.implied}</td>
+                  </>
+                )}
+                {strategy === "triangular" && (
+                  <>
+                    <td className="px-4 py-2">{canonicalizeSymbol(op.pair)}</td>
+                    <td className="px-4 py-2">{op.steps?.join(" → ")}</td>
+                    <td className="px-4 py-2 text-yellow-300 font-black">{op.profitPercent}%</td>
+                  </>
+                )}
+                {strategy === "stat" && (
+                  <>
+                    <td className="px-4 py-2">{canonicalizeSymbol(op.pair)}</td>
+                    <td className="px-4 py-2">{op.mean}</td>
+                    <td className="px-4 py-2">{op.std}</td>
+                    <td className="px-4 py-2">{op.latest}</td>
+                    <td className="px-4 py-2 text-yellow-300 font-black">{op.profitPercent}%</td>
+                  </>
+                )}
+                {strategy === "funding" && (
+                  <>
+                    <td className="px-4 py-2">{canonicalizeSymbol(op.pair)}</td>
+                    <td className="px-4 py-2">{op.exchange}</td>
+                    <td className="px-4 py-2">{op.fundingRate}</td>
+                    <td className="px-4 py-2 text-yellow-300 font-black">{op.profitPercent}%</td>
                   </>
                 )}
               </tr>
