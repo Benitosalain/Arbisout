@@ -24,55 +24,72 @@ function Scanner() {
   const [recentOpps, setRecentOpps] = useState({});
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const response = await fetch(`${API_BASE}/api/opportunities`);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
+  const fetchData = async () => {
+    setLoading(true);
+    setError(null);
 
-        const now = Date.now();
-        const updatedRecent = { ...recentOpps };
-        const filtered = {};
-
-        STRATEGY_KEYS.forEach(key => {
-          const filteredData = (data[key] || []).filter(op => parseFloat(op.profitPercent || op.profitPercentage) >= 1);
-          filtered[key] = filteredData;
-
-          filteredData.forEach(op => {
-            const keyHash = JSON.stringify(op);
-            updatedRecent[keyHash] = { op, timestamp: now };
-          });
-        });
-
-        const validRecent = {};
-        Object.entries(updatedRecent).forEach(([key, value]) => {
-          if (now - value.timestamp < 30000) {
-            validRecent[key] = value;
-          }
-        });
-
-        setRecentOpps(validRecent);
-        setAllOpps(filtered);
-        setLastUpdated(new Date());
-
-        STRATEGY_KEYS.forEach(key => {
-          if (Array.isArray(filtered[key]) && filtered[key].length > 0) {
-            setLastNonEmptyOpps(prev => ({ ...prev, [key]: filtered[key] }));
-            setLastSeen(prev => ({ ...prev, [key]: new Date() }));
-          }
-        });
-      } catch (err) {
-        setError("Failed to fetch data. Please ensure the backend server is running and accessible.");
-      } finally {
-        setLoading(false);
-      }
+    const THRESHOLDS = {
+      cross: 1,
+      inter: 0.3,
+      triangular: 0.1,
+      stat: 0.1,
+      funding: 0.1
     };
-    fetchData();
-    const intervalId = setInterval(fetchData, 15000);
-    return () => clearInterval(intervalId);
-  }, [recentOpps]);
+
+    try {
+      const response = await fetch(`${API_BASE}/api/opportunities`);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const data = await response.json();
+
+      const now = Date.now();
+      const updatedRecent = { ...recentOpps };
+      const filtered = {};
+
+      STRATEGY_KEYS.forEach(key => {
+        const raw = data[key] || [];
+        const minProfit = THRESHOLDS[key];
+
+        const filteredData = raw.filter(op =>
+          parseFloat(op.profitPercent || op.profitPercentage) >= minProfit
+        );
+
+        filtered[key] = filteredData;
+
+        filteredData.forEach(op => {
+          const keyHash = JSON.stringify(op);
+          updatedRecent[keyHash] = { op, timestamp: now };
+        });
+      });
+
+      const validRecent = {};
+      Object.entries(updatedRecent).forEach(([key, value]) => {
+        if (now - value.timestamp < 30000) {
+          validRecent[key] = value;
+        }
+      });
+
+      setRecentOpps(validRecent);
+      setAllOpps(filtered);
+      setLastUpdated(new Date());
+
+      STRATEGY_KEYS.forEach(key => {
+        if (Array.isArray(filtered[key]) && filtered[key].length > 0) {
+          setLastNonEmptyOpps(prev => ({ ...prev, [key]: filtered[key] }));
+          setLastSeen(prev => ({ ...prev, [key]: new Date() }));
+        }
+      });
+    } catch (err) {
+      setError("Failed to fetch data. Please ensure the backend server is running and accessible.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchData();
+  const intervalId = setInterval(fetchData, 15000);
+  return () => clearInterval(intervalId);
+}, [recentOpps]);
+
 
   const isFresh = (op) => {
     const keyHash = JSON.stringify(op);
