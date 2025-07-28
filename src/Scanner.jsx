@@ -82,8 +82,16 @@ function Scanner() {
   };
 
   const opps = Object.values(recentOpps)
-    .map(o => o.op)
-    .filter(op => (strategy === 'cross' && op.buyEx) || (strategy === 'inter' && op.exchange));
+  .map(o => o.op)
+  .filter(op => {
+    if (strategy === 'cross') return op.buyEx || op.buyExchange;
+    if (strategy === 'inter') return op.exchange;
+    if (strategy === 'triangular') return op.steps;
+    if (strategy === 'stat') return op.pair && op.mean;
+    if (strategy === 'funding') return op.exchange && op.pair && op.fundingRate;
+    return false;
+  });
+
 
   return (
     <div className="mb-4 bg-gray-900 p-6 rounded-2xl shadow-2xl border border-yellow-500 animate-fade-in">
