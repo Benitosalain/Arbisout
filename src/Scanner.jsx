@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TrendingUp } from 'lucide-react';
-import { canonicalizeSymbol, extractPairFromOpportunity } from "../backend/symbol-mapping.js";
+import { canonicalizeSymbol, extractPairFromOpportunity } from "./utils/symbol-mapping.js";
 
 const API_BASE = process.env.REACT_APP_API_BASE_URL;
 
