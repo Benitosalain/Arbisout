@@ -660,15 +660,6 @@ export const pricesByExchange = {
   }
 };
 
-for (const ex in pricesByExchange) {
-  const pairs = Object.keys(pricesByExchange[ex]);
-  if (pairs.includes("BTC-USDT") && pairs.includes("ETH-USDT") && pairs.includes("ETH-BTC")) {
-    console.log(`Exchange ${ex} has all required pairs for triangular/inter-asset`);
-  } else {
-    console.log(`Exchange ${ex} missing pairs:`, ["BTC-USDT", "ETH-USDT", "ETH-BTC"].filter(p => !pairs.includes(p)));
-  }
-}
-
 export const SYMBOL_ALIASES = {
   "MATIC": "POL",
   "LUNA": "LUNC",
@@ -676,8 +667,80 @@ export const SYMBOL_ALIASES = {
 };
 
 export function canonicalizeSymbol(symbol) {
-  const [base, quote] = symbol.split("-");
-  const baseAlias = SYMBOL_ALIASES[base] || base;
-  const quoteAlias = SYMBOL_ALIASES[quote] || quote;
-  return `${baseAlias}-${quoteAlias}`;
+  // Handle undefined, null, or empty string
+  if (!symbol || typeof symbol !== 'string') {
+    console.warn(`[canonicalizeSymbol] Invalid symbol:`, symbol);
+    return symbol || 'UNKNOWN';
+  }
+
+  // Handle symbols that are already in the right format
+  if (!symbol.includes('-')) {
+    // If it doesn't have a dash, it might be a compound symbol like BTCUSDT
+    // Try to split it intelligently
+    const commonQuotes = ['USDT', 'USDC', 'USD', 'BTC', 'ETH', 'BNB'];
+    for (const quote of commonQuotes) {
+      if (symbol.endsWith(quote)) {
+        const base = symbol.slice(0, -quote.length);
+        if (base) {
+          return canonicalizeSymbol(`${base}-${quote}`);
+        }
+      }
+    }
+    // If we can't split it, return as is
+    return symbol;
+  }
+
+  try {
+    const parts = symbol.split("-");
+    if (parts.length !== 2) {
+      console.warn(`[canonicalizeSymbol] Unexpected symbol format:`, symbol);
+      return symbol;
+    }
+
+    const [base, quote] = parts;
+    if (!base || !quote) {
+      console.warn(`[canonicalizeSymbol] Missing base or quote in symbol:`, symbol);
+      return symbol;
+    }
+
+    const baseAlias = SYMBOL_ALIASES[base] || base;
+    const quoteAlias = SYMBOL_ALIASES[quote] || quote;
+    return `${baseAlias}-${quoteAlias}`;
+  } catch (error) {
+    console.error(`[canonicalizeSymbol] Error processing symbol:`, symbol, error);
+    return symbol || 'UNKNOWN';
+  }
+}
+
+// Helper function to extract pair information from different strategy objects
+export function extractPairFromOpportunity(op) {
+  // Handle different opportunity structures
+  if (op.pair) return op.pair;
+  if (op.symbol) return op.symbol;
+  if (op.triangle && Array.isArray(op.triangle)) {
+    return op.triangle.join('-');
+  }
+  if (op.route && Array.isArray(op.route)) {
+    return op.route.join(' → ');
+  }
+  if (op.pairs && Array.isArray(op.pairs)) {
+    return op.pairs.join(', ');
+  }
+  
+  // For triangular arbitrage
+  if (op.steps && Array.isArray(op.steps)) {
+    return op.steps.join(' → ');
+  }
+  
+  return 'Unknown';
+}
+
+// Check if exchanges have required pairs for triangular/inter-asset arbitrage
+for (const ex in pricesByExchange) {
+  const pairs = Object.keys(pricesByExchange[ex]);
+  if (pairs.includes("BTC-USDT") && pairs.includes("ETH-USDT") && pairs.includes("ETH-BTC")) {
+    console.log(`Exchange ${ex} has all required pairs for triangular/inter-asset`);
+  } else {
+    console.log(`Exchange ${ex} missing pairs:`, ["BTC-USDT", "ETH-USDT", "ETH-BTC"].filter(p => !pairs.includes(p)));
+  }
 }
