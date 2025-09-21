@@ -331,3 +331,11 @@ export const pricesByExchange = {
     'ETH-BTC': 'ETH_BTC'
   }
 };
+
+export function canonicalizeSymbol(symbol) {
+  if (typeof symbol !== 'string') {
+    return null;
+  }
+  // Converts a symbol to a standard format (e.g., BTC_USDT to BTC-USDT)
+  return symbol.toUpperCase().replace(/_/g, '-');
+}
