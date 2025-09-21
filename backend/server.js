@@ -48,7 +48,6 @@ import { fetchSushiSwapPrice, sushiSwapSymbol } from "./Adapters/sushiswap.js";
 import { fetchUniswapPrice, uniswapSymbol } from "./Adapters/uniswap.js";
 import { fetchWhitebitTicker, whitebitSymbol } from "./Adapters/whitebit.js";
 import { fetchAscendexTicker, ascendexSymbol } from "./Adapters/ascendex.js";
-import { fetchCoinbaseTicker, coinbaseSymbol } from "./Adapters/coinbase.js";
 import { fetchBitrueTicker, bitrueSymbol } from "./Adapters/bitrue.js";
 import { fetchBithumbGlobalTicker, bithumbGlobalSymbol } from "./Adapters/bithumbglobal.js";
 import { fetchBitmartTicker, bitmartSymbol } from "./Adapters/bitmart.js";
@@ -366,7 +365,6 @@ const ADAPTERS = {
   Uniswap: { fetch: fetchUniswapPrice, symbol: uniswapSymbol },
   WhiteBIT: { fetch: fetchWhitebitTicker, symbol: whitebitSymbol },
   AscendEX: { fetch: fetchAscendexTicker, symbol: ascendexSymbol },
-  Coinbase: { fetch: fetchCoinbaseTicker, symbol: coinbaseSymbol },
   Bitrue: { fetch: fetchBitrueTicker, symbol: bitrueSymbol },
   BithumbGlobal: { fetch: fetchBithumbGlobalTicker, symbol: bithumbGlobalSymbol },
   Bitmart: { fetch: fetchBitmartTicker, symbol: bitmartSymbol },
