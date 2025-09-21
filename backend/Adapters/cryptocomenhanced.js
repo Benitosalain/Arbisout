@@ -1,20 +1,17 @@
-export async function fetchCryptoComTickers() {
-  const url = "https://api.crypto.com/v2/public/get-ticker";
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Crypto.com API error: ${res.status}`);
-  const { result } = await res.json();
-  return Object.fromEntries(result.data.map(t => [t.i, parseFloat(t.a)]));
-}
+import { canonicalizeSymbol } from "../symbol-mapping.js";
 
-export async function fetchCryptoComTicker(symbol) {
+export async function fetchCryptoComEnhancedTicker(symbol) {
   const url = `https://api.crypto.com/v2/public/get-ticker?instrument_name=${symbol}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Crypto.com API error: ${res.status}`);
   const { result } = await res.json();
-  return parseFloat(result.data[0].a);
+  if (result && result.data && result.data.length > 0) {
+    return parseFloat(result.data[0].a);
+  }
+  return null;
 }
 
-export function cryptoComSymbol(standardSymbol) {
-  // Crypto.com uses "BTC_USDT"
+export function cryptoComEnhancedSymbol(standardSymbol) {
+  // The Crypto.com API uses an underscore, e.g., BTC_USDT
   return standardSymbol.replace("-", "_");
 }
