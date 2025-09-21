@@ -36,7 +36,6 @@ import { fetchCoinexTicker, coinexSymbol } from "./Adapters/coinex.js";
 import { fetchBitgetTicker, bitgetSymbol } from "./Adapters/bitget.js";
 import { fetchBybitTicker, bybitSymbol } from "./Adapters/bybit.js";
 import { fetchCoinbaseProTicker, coinbaseProSymbol } from "./Adapters/coinbasepro.js";
-import { fetchCryptoComTicker, cryptoComSymbol } from "./Adapters/cryptocom.js";
 import { fetchLbankTicker, lbankSymbol } from "./Adapters/lbank.js";
 import { fetchMexcTicker, mexcSymbol } from "./Adapters/mexc.js";
 import { fetchOneInchPrice, oneInchSymbol } from "./Adapters/oneinch.js";
@@ -353,7 +352,6 @@ const ADAPTERS = {
   Bitget: { fetch: fetchBitgetTicker, symbol: bitgetSymbol },
   Bybit: { fetch: fetchBybitTicker, symbol: bybitSymbol },
   CoinbasePro: { fetch: fetchCoinbaseProTicker, symbol: coinbaseProSymbol },
-  CryptoCom: { fetch: fetchCryptoComTicker, symbol: cryptoComSymbol },
   LBank: { fetch: fetchLbankTicker, symbol: lbankSymbol },
   MEXC: { fetch: fetchMexcTicker, symbol: mexcSymbol },
   OneInch: { fetch: fetchOneInchPrice, symbol: oneInchSymbol },
