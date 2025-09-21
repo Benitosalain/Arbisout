@@ -118,7 +118,7 @@ export const EXCHANGES = [
   },
   {
     name: 'HitBTC',
-    api: 'https://api.hitbtc.com/api/2/public/ticker/',
+    api: 'api.hitbtc.com/api/3/ws/public',
     symbols: [
       'BTC-USDT', 'ETH-USDT', 'LTC-USDT', 'BCH-USDT', 'BNB-USDT', 'SOL-USDT', 'ADA-USDT', 'XRP-USDT',
       'DOT-USDT', 'DOGE-USDT', 'AVAX-USDT', 'MATIC-USDT', 'TRX-USDT', 'LINK-USDT', 'ATOM-USDT',
