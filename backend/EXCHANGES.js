@@ -54,7 +54,7 @@ export const EXCHANGES = [
   },
   {
     name: 'OKEx',
-    api: 'https://www.okex.com/api/spot/v3/instruments/',
+    api: 'https://www.okex.com/api/v5/market/ticker?instId=',
     symbols: [
       'BTC-USDT', 'ETH-USDT', 'LTC-USDT', 'BCH-USDT', 'BNB-USDT', 'SOL-USDT', 'ADA-USDT', 'XRP-USDT',
       'DOT-USDT', 'DOGE-USDT', 'AVAX-USDT', 'MATIC-USDT', 'SHIB-USDT', 'TRX-USDT', 'LINK-USDT', 'ATOM-USDT',
@@ -118,7 +118,7 @@ export const EXCHANGES = [
   },
   {
     name: 'HitBTC',
-    api: 'api.hitbtc.com/api/3/ws/public',
+    api: 'https://api.hitbtc.com/api/3/public/price/ticker?symbols=',
     symbols: [
       'BTC-USDT', 'ETH-USDT', 'LTC-USDT', 'BCH-USDT', 'BNB-USDT', 'SOL-USDT', 'ADA-USDT', 'XRP-USDT',
       'DOT-USDT', 'DOGE-USDT', 'AVAX-USDT', 'MATIC-USDT', 'TRX-USDT', 'LINK-USDT', 'ATOM-USDT',
@@ -221,5 +221,20 @@ export const EXCHANGES = [
     name: 'WhiteBIT',
     api: 'https://whitebit.com/api/v4/public/ticker',
     symbols: Object.keys(pricesByExchange['WhiteBIT'] || {})
+  },
+  {
+    name: 'LBank',
+    api: 'https://api.lbank.com/v2/ticker/24hr.do?symbol=',
+    symbols: Object.keys(pricesByExchange['LBank'] || {})
+  },
+  {
+    name: 'MEXC',
+    api: 'https://api.mexc.com/api/v3/ticker/price?symbol=',
+    symbols: Object.keys(pricesByExchange['MEXC'] || {})
+  },
+  {
+    name: 'AscendEX',
+    api: 'https://ascendex.com/api/pro/v1/ticker',
+    symbols: Object.keys(pricesByExchange['AscendEX'] || {})
   }
 ];
