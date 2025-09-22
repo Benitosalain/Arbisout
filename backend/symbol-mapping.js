@@ -1,391 +1,109 @@
+// Only use for exceptions/aliases (e.g., POL-USDT → MATICUSDT on Binance)
 export const pricesByExchange = {
-  'Binance': {
-    'BTC-USDT': 'BTCUSDT', 'ETH-USDT': 'ETHUSDT', 'ETH-BTC': 'ETHBTC',
-    'LTC-USDT': 'LTCUSDT', 'BCH-USDT': 'BCHUSDT', 'BNB-USDT': 'BNBUSDT',
-    'SOL-USDT': 'SOLUSDT', 'ADA-USDT': 'ADAUSDT', 'XRP-USDT': 'XRPUSDT',
-    'DOT-USDT': 'DOTUSDT', 'DOGE-USDT': 'DOGEUSDT', 'AVAX-USDT': 'AVAXUSDT',
-    'MATIC-USDT': 'MATICUSDT', 'POL-USDT': 'MATICUSDT', // alias
-    'SHIB-USDT': 'SHIBUSDT', 'TRX-USDT': 'TRXUSDT', 'LINK-USDT': 'LINKUSDT',
-    'ATOM-USDT': 'ATOMUSDT', 'XMR-USDT': 'XMRUSDT', 'WBTC-USDT': 'WBTCUSDT',
-    'UNI-USDT': 'UNIUSDT', 'XTZ-USDT': 'XTZUSDT', 'FIL-USDT': 'FILUSDT',
-    'EOS-USDT': 'EOSUSDT', 'AAVE-USDT': 'AAVEUSDT', 'SAND-USDT': 'SANDUSDT',
-    'APE-USDT': 'APEUSDT', 'GRT-USDT': 'GRTUSDT', 'ETC-USDT': 'ETCUSDT',
-    'NEAR-USDT': 'NEARUSDT', 'EGLD-USDT': 'EGLDUSDT', 'ZEC-USDT': 'ZECUSDT',
-    'STX-USDT': 'STXUSDT', 'ALGO-USDT': 'ALGOUSDT', 'SNX-USDT': 'SNXUSDT',
-    'RUNE-USDT': 'RUNEUSDT', 'MKR-USDT': 'MKRUSDT', 'CRV-USDT': 'CRVUSDT',
-    'DYDX-USDT': 'DYDXUSDT', 'LDO-USDT': 'LDOUSDT', '1INCH-USDT': '1INCHUSDT',
-    'COMP-USDT': 'COMPUSDT', 'BTC-USD': 'BTCUSD', 'ETH-USD': 'ETHUSD',
-    'LTC-USD': 'LTCUSD', 'SOL-USD': 'SOLUSD', 'USDC-USDT': 'USDCUSDT',
-    'DAI-USDT': 'DAIUSDT', 'ARB-USDT': 'ARBUSDT', 'ARB-BTC': 'ARBBTC',
-    'TON-USDT': 'TONUSDT', 'TON-BTC': 'TONBTC', 'OP-USDT': 'OPUSDT', 'OP-BTC': 'OPBTC',    // Cross-asset
-    'LTC-BTC': 'LTCBTC', 'XRP-BTC': 'XRPBTC', 'BNB-BTC': 'BNBBTC',
-    'SOL-BTC': 'SOLBTC', 'ADA-BTC': 'ADABTC'
+  Binance: {
+    // Example alias:
+    'POL-USDT': 'MATICUSDT',
+    // Add more aliases as needed
   },
-  'Kraken': {
-    'BTC-USDT': 'XXBTZUSD',
-    'ETH-USDT': 'XETHZUSD',
-    'ETH-BTC': 'XETHXXBT',
-    'LTC-USDT': 'XLTCZUSD',
-    'BCH-USDT': 'BCHUSD',
-    'BNB-USDT': null,
-    'SOL-USDT': 'SOLUSD',
-    'ADA-USDT': 'ADAUSD',
-    'XRP-USDT': 'XXRPZUSD',
-    'DOT-USDT': 'DOTUSD',
-    'DOGE-USDT': 'DOGEUSD',
-    'AVAX-USDT': 'AVAXUSD',
-    'MATIC-USDT': 'MATICUSD',
-    'SHIB-USDT': 'SHIBUSD',
-    'TRX-USDT': 'TRXUSD',
-    'LINK-USDT': 'LINKUSD',
-    'ATOM-USDT': 'ATOMUSD',
-    'XMR-USDT': 'XXMRZUSD',
-    'WBTC-USDT': 'WBTCUSD',
-    'UNI-USDT': 'UNIUSD',
-    'XTZ-USDT': 'XTZUSD',
-    'FIL-USDT': 'FILUSD',
-    'EOS-USDT': 'EOSUSD',
-    'AAVE-USDT': 'AAVEUSD',
-    'SAND-USDT': null,
-    'APE-USDT': null,
-    'GRT-USDT': null,
-    'ETC-USDT': 'ETCUSD',
-    'NEAR-USDT': 'NEARUSD',
-    'EGLD-USDT': null,
-    'ZEC-USDT': 'ZECUSD',
-    'STX-USDT': null,
-    'ALGO-USDT': 'ALGOUSD',
-    'SNX-USDT': null,
-    'RUNE-USDT': null,
-    'MKR-USDT': 'MKRUSD',
-    'CRV-USDT': null,
-    'DYDX-USDT': null,
-    'LDO-USDT': null,
-    '1INCH-USDT': null,
-    'COMP-USDT': 'COMPUSD',
-    'BTC-USD': 'XXBTZUSD',
-    'ETH-USD': 'XETHZUSD',
-    'LTC-USD': 'XLTCZUSD',
-    'SOL-USD': 'SOLUSD',
-    'USDC-USDT': null,
-    'DAI-USDT': null,
-    // Cross-asset pairs:
-    'ETH-BTC': 'XETHXXBT',
-    'LTC-BTC': 'XLTCXXBT',
-    'XRP-BTC': 'XXRPXXBT',
-    'BNB-BTC': null,
-    'SOL-BTC': 'SOLXXBT',
-    'ADA-BTC': 'ADAXXBT'
-  },
-  'Bitfinex': {
-    'BTC-USDT': 'BTCUSD',
-    'ETH-USDT': 'ETHUSD',
-    'ETH-BTC': 'ETHBTC',
-    'LTC-USDT': 'LTCUSD',
-    'BCH-USDT': 'BCHUSD',
-    'BNB-USDT': null,
-    'SOL-USDT': 'SOLUSD',
-    'ADA-USDT': 'ADAUSD',
-    'XRP-USDT': 'XRPUSD',
-    'DOT-USDT': 'DOTUSD',
-    'DOGE-USDT': null,
-    'AVAX-USDT': 'AVAXUSD',
-    'MATIC-USDT': null,
-    'SHIB-USDT': null,
-    'TRX-USDT': 'TRXUSD',
-    'LINK-USDT': 'LINKUSD',
-    'ATOM-USDT': 'ATOMUSD',
-    'XMR-USDT': 'XMRUSD',
-    'WBTC-USDT': null,
-    'UNI-USDT': 'UNIUSD',
-    'XTZ-USDT': 'XTZUSD',
-    'FIL-USDT': 'FILUSD',
-    'EOS-USDT': 'EOSUSD',
-    'AAVE-USDT': 'AAVEUSD',
-    'SAND-USDT': null,
-    'APE-USDT': null,
-    'GRT-USDT': null,
-    'ETC-USDT': 'ETCUSD',
-    'NEAR-USDT': null,
-    'EGLD-USDT': null,
-    'ZEC-USDT': 'ZECUSD',
-    'STX-USDT': null,
-    'ALGO-USDT': null,
-    'SNX-USDT': null,
-    'RUNE-USDT': null,
-    'MKR-USDT': 'MKRUSD',
-    'CRV-USDT': null,
-    'DYDX-USDT': null,
-    'LDO-USDT': null,
-    '1INCH-USDT': null,
-    'COMP-USDT': 'COMPUSD',
-    'BTC-USD': 'BTCUSD',
-    'ETH-USD': 'ETHUSD',
-    'LTC-USD': 'LTCUSD',
-    'SOL-USD': 'SOLUSD',
-    'USDC-USDT': null,
-    'DAI-USDT': null,
-    // Cross-asset pairs:
-    'ETH-BTC': 'ETHBTC',
-    'LTC-BTC': 'LTCBTC',
-    'XRP-BTC': 'XRPBTC',
-    'BNB-BTC': 'BNBBTC',
-    'SOL-BTC': 'SOLBTC',
-    'ADA-BTC': 'ADABTC'
-  },
-  'Huobi': {
-    'BTC-USDT': 'btcusdt',
-    'ETH-USDT': 'ethusdt',
-    'ETH-BTC': 'ethbtc',
-    'LTC-USDT': 'ltcusdt',
-    'BCH-USDT': 'bchusdt',
-    'BNB-USDT': null,
-    'SOL-USDT': 'solusdt',
-    'ADA-USDT': 'adausdt',
-    'XRP-USDT': 'xrpusdt',
-    'DOT-USDT': 'dotusdt',
-    'DOGE-USDT': 'dogeusdt',
-    'AVAX-USDT': 'avaxusdt',
-    'MATIC-USDT': null,
-    'SHIB-USDT': 'shibusdt',
-    'TRX-USDT': 'trxusdt',
-    'LINK-USDT': 'linkusdt',
-    'ATOM-USDT': 'atomusdt',
-    'XMR-USDT': 'xmrusdt',
-    'WBTC-USDT': null,
-    'UNI-USDT': 'uniusdt',
-    'XTZ-USDT': 'xtzusdt',
-    'FIL-USDT': 'filusdt',
-    'EOS-USDT': 'eosusdt',
-    'AAVE-USDT': 'aaveusdt',
-    'SAND-USDT': 'sandusdt',
-    'APE-USDT': null,
-    'GRT-USDT': null,
-    'ETC-USDT': 'etcusdt',
-    'NEAR-USDT': 'nearusdt',
-    'EGLD-USDT': null,
-    'ZEC-USDT': 'zecusdt',
-    'STX-USDT': null,
-    'ALGO-USDT': 'algousdt',
-    'SNX-USDT': null,
-    'RUNE-USDT': null,
-    'MKR-USDT': 'mkrusdt',
-    'CRV-USDT': null,
-    'DYDX-USDT': null,
-    'LDO-USDT': null,
-    '1INCH-USDT': null,
-    'COMP-USDT': 'compusdt',
-    'ETH-BTC': 'ethbtc',
-    'LTC-BTC': 'ltcbtc',
-    'XRP-BTC': 'xrp',
-    'BNB-BTC': null,
-    'SOL-BTC': 'solbtc',
-    'ADA-BTC': 'adabtc'
-  },
-  'OKEx': {
-    'BTC-USDT': 'BTC-USDT',
-    'ETH-USDT': 'ETH-USDT',
-    'ETH-BTC': 'ETH-BTC',
-    'LTC-USDT': 'LTC-USDT',
-    'BCH-USDT': 'BCH-USDT',
-    'BNB-USDT': 'BNB-USDT',
-    'SOL-USDT': 'SOL-USDT',
-    'ADA-USDT': 'ADA-USDT',
-    'XRP-USDT': 'XRP-USDT',
-    'DOT-USDT': 'DOT-USDT',
-    'DOGE-USDT': 'DOGE-USDT',
-    'AVAX-USDT': 'AVAX-USDT',
-    'MATIC-USDT': 'MATIC-USDT',
-    'SHIB-USDT': 'SHIB-USDT',
-    'TRX-USDT': 'TRX-USDT',
-    'LINK-USDT': 'LINK-USDT',
-    'ATOM-USDT': 'ATOM-USDT',
-    'XMR-USDT': 'XMR-USDT',
-    'WBTC-USDT': 'WBTC-USDT',
-    'UNI-USDT': 'UNI-USDT',
-    'XTZ-USDT': 'XTZ-USDT',
-    'FIL-USDT': 'FIL-USDT',
-    'EOS-USDT': 'EOS-USDT',
-    'AAVE-USDT': 'AAVE-USDT',
-    'SAND-USDT': 'SAND-USDT',
-    'APE-USDT': 'APE-USDT',
-    'GRT-USDT': 'GRT-USDT',
-    'ETC-USDT': 'ETC-USDT',
-    'NEAR-USDT': 'NEAR-USDT',
-    'EGLD-USDT': 'EGLD-USDT',
-    'ZEC-USDT': 'ZEC-USDT',
-    'STX-USDT': 'STX-USDT',
-    'ALGO-USDT': 'ALGO-USDT',
-    'SNX-USDT': 'SNX-USDT',
-    'RUNE-USDT': 'RUNE-USDT',
-    'MKR-USDT': 'MKR-USDT',
-    'CRV-USDT': 'CRV-USDT',
-    'DYDX-USDT': 'DYDX-USDT',
-    'LDO-USDT': 'LDO-USDT',
-    '1INCH-USDT': '1INCH-USDT',
-    'COMP-USDT': 'COMP-USDT',
-    'ETH-BTC': 'ETH-BTC'
-  },
-  'Gate.io': {
-    'BTC-USDT': 'BTC_USDT',
-    'ETH-USDT': 'ETH_USDT',
-    'ETH-BTC': 'ETH_BTC',
-    'LTC-USDT': 'LTC_USDT',
-    'BCH-USDT': 'BCH_USDT',
-    'BNB-USDT': 'BNB_USDT',
-    'SOL-USDT': 'SOL_USDT',
-    'ADA-USDT': 'ADA_USDT',
-    'XRP-USDT': 'XRP_USDT',
-    'DOT-USDT': 'DOT_USDT',
-    'DOGE-USDT': 'DOGE_USDT',
-    'AVAX-USDT': 'AVAX_USDT',
-    'MATIC-USDT': 'MATIC_USDT',
-    'SHIB-USDT': 'SHIB_USDT',
-    'TRX-USDT': 'TRX_USDT',
-    'LINK-USDT': 'LINK_USDT',
-    'ATOM-USDT': 'ATOM_USDT',
-    'XMR-USDT': 'XMR_USDT',
-    'WBTC-USDT': 'WBTC_USDT',
-    'UNI-USDT': 'UNI_USDT',
-    'XTZ-USDT': 'XTZ_USDT',
-    'FIL-USDT': 'FIL_USDT',
-    'EOS-USDT': 'EOS_USDT',
-    'AAVE-USDT': 'AAVE_USDT',
-    'SAND-USDT': 'SAND_USDT',
-    'APE-USDT': 'APE_USDT',
-    'GRT-USDT': 'GRT_USDT',
-    'ETC-USDT': 'ETC_USDT',
-    'NEAR-USDT': 'NEAR_USDT',
-    'EGLD-USDT': 'EGLD_USDT',
-    'ZEC-USDT': 'ZEC_USDT',
-    'STX-USDT': 'STX_USDT',
-    'ALGO-USDT': 'ALGO_USDT',
-    'SNX-USDT': 'SNX_USDT',
-    'RUNE-USDT': 'RUNE_USDT',
-    'MKR-USDT': 'MKR_USDT',
-    'CRV-USDT': 'CRV_USDT',
-    'DYDX-USDT': 'DYDX_USDT',
-    'LDO-USDT': 'LDO_USDT',
-    '1INCH-USDT': '1INCH_USDT',
-    'COMP-USDT': 'COMP_USDT',
-    'ETH-BTC': 'ETH_BTC'
-  },
-  'KuCoin': {
-    'BTC-USDT': 'BTC-USDT',
-    'ETH-USDT': 'ETH-USDT',
-    'ETH-BTC': 'ETH-BTC',
-    'LTC-USDT': 'LTC-USDT',
-    'BCH-USDT': 'BCH-USDT',
-    'BNB-USDT': 'BNB-USDT',
-    'SOL-USDT': 'SOL-USDT',
-    'ADA-USDT': 'ADA-USDT',
-    'XRP-USDT': 'XRP-USDT',
-    'DOT-USDT': 'DOT-USDT',
-    'DOGE-USDT': 'DOGE-USDT',
-    'AVAX-USDT': 'AVAX-USDT',
-    'MATIC-USDT': 'MATIC-USDT',
-    'SHIB-USDT': 'SHIB-USDT',
-    'TRX-USDT': 'TRX-USDT',
-    'LINK-USDT': 'LINK-USDT',
-    'ATOM-USDT': 'ATOM-USDT',
-    'XMR-USDT': 'XMR-USDT',
-    'WBTC-USDT': 'WBTC-USDT',
-    'UNI-USDT': 'UNI-USDT',
-    'XTZ-USDT': 'XTZ-USDT',
-    'FIL-USDT': 'FIL-USDT',
-    'EOS-USDT': 'EOS-USDT',
-    'AAVE-USDT': 'AAVE-USDT',
-    'SAND-USDT': 'SAND-USDT',
-    'APE-USDT': 'APE-USDT',
-    'GRT-USDT': 'GRT-USDT',
-    'ETC-USDT': 'ETC-USDT',
-    'NEAR-USDT': 'NEAR-USDT',
-    'EGLD-USDT': 'EGLD-USDT',
-    'ZEC-USDT': 'ZEC-USDT',
-    'STX-USDT': 'STX-USDT',
-    'ALGO-USDT': 'ALGO-USDT',
-    'SNX-USDT': 'SNX-USDT',
-    'RUNE-USDT': 'RUNE-USDT',
-    'MKR-USDT': 'MKR-USDT',
-    'CRV-USDT': 'CRV-USDT',
-    'DYDX-USDT': 'DYDX-USDT',
-    'LDO-USDT': 'LDO-USDT',
-    '1INCH-USDT': '1INCH-USDT',
-    'COMP-USDT': 'COMP-USDT',
-    'ETH-BTC': 'ETH-BTC',
-    'ARB-USDT': 'ARB-USDT',
-    'ARB-BTC': 'ARB-BTC',
-    'TON-USDT': 'TON-USDT',
-    'TON-BTC': 'TON-BTC',
-    'OP-USDT': 'OP-USDT',
-    'OP-BTC': 'OP-BTC',    // Cross-asset
-  },
-  'Coinbase': {
-    "BTC-USD": "BTC-USD",
-    "ETH-USD": "ETH-USD",
-    "LTC-USD": "LTC-USD",
-    "USDC-USD": "USDC-USD",
-    "USDC-USDT": "USDC-USDT",
-    "DAI-USDT": "DAI-USDT",
-    "BUSD-USDT": "BUSD-USDT",
-    "TUSD-USDT": "TUSD-USDT",
-    "FRAX-USDT": "FRAX-USDT",
-    "BTC-EUR": "BTC-EUR",
-    "BTC-GBP": "BTC-GBP",
-    "BTC-JPY": "BTC-JPY",
-    "ETH-EUR": "ETH-EUR",
-    "ETH-GBP": "ETH-GBP",
-    "ETH-JPY": "ETH-JPY",
-    "LTC-EUR": "LTC-EUR",
-    "LTC-GBP": "LTC-GBP",
-    "LTC-JPY": "LTC-JPY",
-    // ...add all other supported pairs for Coinbase...
-  },
-  'Bitrue': {
-    "BTC-USDT": "BTCUSDT",
-    "ETH-USDT": "ETHUSDT",
-    "ADA-USDT": "ADAUSDT",
-    "XRP-USDT": "XRPUSDT",
-    "SOL-USDT": "SOLUSDT",
-    "PEPE-USDT": "PEPEUSDT",
-    "FLOKI-USDT": "FLOKIUSDT",
-    "DOGE-USDT": "DOGEUSDT",
-    "SHIB-USDT": "SHIBUSDT",
-    // ...add all other supported pairs for Bitrue...
-  },
-  'BithumbGlobal': {
-    "BTC-USDT": "BTC-USDT",
-    "ETH-USDT": "ETH-USDT",
-    // ...add all supported pairs...
-  },
-  'Bitmart': {
-    "BTC-USDT": "BTC_USDT",
-    "ETH-USDT": "ETH_USDT",
-    // ...add all supported pairs...
-  },
-  'XTcom': {
-    "BTC-USDT": "btc_usdt",
-    "ETH-USDT": "eth_usdt",
-    // ...add all supported pairs...
-  },
-  'Deribit': {
-    "BTC-USD": "BTC-USD",
-    "ETH-USD": "ETH-USD",
-    // ...add all supported pairs...
-  },
-  'CryptoComEnhanced': {
-    "BTC-USDT": "BTC_USDT",
-    "ETH-USDT": "ETH_USDT",
-    // ...add all supported pairs...
-  },
-  // ...other exchanges...
+  Kraken: {},         // Uses normalizeKraken
+  Bitfinex: {},       // Uses normalizeBitfinex
+  Huobi: {},          // Uses normalizeHuobi
+  OKEx: {},
+  Gateio: {},
+  KuCoin: {},
+  Coinbase: {},
+  Bitrue: {},
+  BithumbGlobal: {},
+  Bitmart: {},
+  XTcom: {},
+  Deribit: {},
+  CryptoComEnhanced: {},
+  AscendEX: {},
+  BinanceUS: {},
+  Bitstamp: {},
+  CoinbasePro: {},
+  CryptoCom: {},
+  Gemini: {},
+  HitBTC: {},
+  LBANK: {},
+  OneInch: {},
+  PancakeSwap: {},
+  Phemex: {},
+  Poloniex: {},
+  Probit: {},
+  SushiSwap: {},
+  Uniswap: {},
+  WhiteBIT: {},
+  MEXC: {},
+  Bitget: {},
+  Bybit: {},
 };
 
+// =====================
+// Symbol Normalizers
+// =====================
 
-export function canonicalizeSymbol(symbol) {
-  if (typeof symbol !== 'string') {
-    return null;
+// Kraken: e.g. XXBTZUSD → BTC-USD
+export function normalizeKraken(rawSymbol) {
+  // Spot: XXBTZUSD, XETHZUSD, XLTCZUSD, etc.
+  // Futures: XBTUSD, ETHUSD, etc.
+  // Map XBT → BTC, XETH → ETH, etc.
+  let s = rawSymbol
+    .replace(/^XBT/, "BTC")
+    .replace(/^XETH/, "ETH")
+    .replace(/^X/, "")
+    .replace(/^Z/, "");
+  // Find quote
+  const match = s.match(/([A-Z]+)(USD|USDT|EUR|GBP|JPY)$/);
+  if (!match) return null;
+  const base = match[1];
+  const quote = match[2];
+  return `${base}-${quote}`;
+}
+
+// Bitfinex: e.g. tBTCUSD → BTC-USD, tETHBTC → ETH-BTC
+export function normalizeBitfinex(rawSymbol) {
+  // Only process symbols starting with 't'
+  if (!rawSymbol.startsWith("t")) return null;
+  // Some pairs are 6 chars, some are longer (e.g. tDOGE:USD)
+  const pair = rawSymbol.slice(1);
+  if (pair.length === 6) {
+    const base = pair.slice(0, 3);
+    const quote = pair.slice(3);
+    return `${base}-${quote}`;
   }
-  // Converts a symbol to a standard format (e.g., BTC_USDT to BTC-USDT)
-  return symbol.toUpperCase().replace(/_/g, '-');
+  // Handle longer pairs (e.g. tDOGE:USD)
+  const [base, quote] = pair.split(":");
+  if (base && quote) return `${base}-${quote}`;
+  return null;
+}
+
+// Huobi: e.g. btcusdt → BTC-USDT, ethbtc → ETH-BTC
+export function normalizeHuobi(rawSymbol) {
+  // Most are 6 chars, but some can be longer (e.g. btcusdt, ethbtc, etc.)
+  if (rawSymbol.length < 6) return null;
+  // Try to split at last 4 chars (usdt, btc, etc.)
+  const quote = rawSymbol.slice(-4).toUpperCase();
+  const base = rawSymbol.slice(0, rawSymbol.length - 4).toUpperCase();
+  return `${base}-${quote}`;
+}
+
+// =====================
+// Canonicalizer (optional utility)
+// =====================
+
+// Converts any symbol to canonical "BASE-QUOTE" (e.g., btcusdt → BTC-USDT)
+export function canonicalizeSymbol(symbol) {
+  if (!symbol) return null;
+  // Already canonical
+  if (symbol.includes("-")) return symbol.toUpperCase();
+  // Try to split at common quote suffixes
+  const QUOTES = ["USDT", "USDC", "USD", "BTC", "ETH", "BNB", "EUR", "GBP", "JPY"];
+  for (const q of QUOTES) {
+    if (symbol.toUpperCase().endsWith(q)) {
+      const base = symbol.slice(0, -q.length).toUpperCase();
+      return `${base}-${q}`;
+    }
+  }
+  return symbol.toUpperCase();
 }
