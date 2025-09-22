@@ -4,67 +4,172 @@ export const EXCHANGES = [
   {
     name: 'Binance',
     api: 'https://api.binance.com/api/v3/ticker/price',
-    symbols: Object.keys(pricesByExchange['Binance'] || {}),
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'BNB-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT',
+      'SHIB-USDT', 'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT', 'XMR-USDT',
+      'ETC-USDT', 'FIL-USDT', 'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT',
+      'WLD-USDT', 'TIA-USDT', 'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT',
+      'SNX-USDT', '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT',
+      'NEAR-USDT', 'ALGO-USDT', 'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT',
+      'ENJ-USDT', 'CHZ-USDT', 'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT',
+      'WBNB-USDT'
+    ]
   },
   {
     name: 'KuCoin',
     api: 'https://api.kucoin.com/api/v1/market/allTickers',
-    symbols: Object.keys(pricesByExchange['KuCoin'] || {}),
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'KCS-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT',
+      'SHIB-USDT', 'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT', 'XMR-USDT',
+      'ETC-USDT', 'FIL-USDT', 'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT',
+      'WLD-USDT', 'TIA-USDT', 'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT',
+      'SNX-USDT', '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT',
+      'NEAR-USDT', 'ALGO-USDT', 'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT',
+      'ENJ-USDT', 'CHZ-USDT', 'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT',
+      'WBNB-USDT'
+    ]
   },
   {
     name: 'OKEx',
     api: 'https://www.okx.com/api/v5/market/tickers?instType=SPOT',
-    symbols: Object.keys(pricesByExchange['OKEx'] || {}),
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'OKB-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT',
+      'SHIB-USDT', 'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT', 'XMR-USDT',
+      'ETC-USDT', 'FIL-USDT', 'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT',
+      'WLD-USDT', 'TIA-USDT', 'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT',
+      'SNX-USDT', '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT',
+      'NEAR-USDT', 'ALGO-USDT', 'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT',
+      'ENJ-USDT', 'CHZ-USDT', 'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT',
+      'WBNB-USDT'
+    ]
   },
   {
     name: 'Gate.io',
     api: 'https://api.gateio.ws/api/v4/spot/tickers',
-    symbols: Object.keys(pricesByExchange['Gate.io'] || {}),
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'GT-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT',
+      'SHIB-USDT', 'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT', 'XMR-USDT',
+      'ETC-USDT', 'FIL-USDT', 'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT',
+      'WLD-USDT', 'TIA-USDT', 'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT',
+      'SNX-USDT', '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT',
+      'NEAR-USDT', 'ALGO-USDT', 'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT',
+      'ENJ-USDT', 'CHZ-USDT', 'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT',
+      'WBNB-USDT'
+    ]
   },
   {
     name: 'MEXC',
     api: 'https://api.mexc.com/api/v3/ticker/price',
-    symbols: Object.keys(pricesByExchange['MEXC'] || {}),
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'BNB-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT',
+      'SHIB-USDT', 'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT', 'XMR-USDT',
+      'ETC-USDT', 'FIL-USDT', 'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT',
+      'WLD-USDT', 'TIA-USDT', 'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT',
+      'SNX-USDT', '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT',
+      'NEAR-USDT', 'ALGO-USDT', 'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT',
+      'ENJ-USDT', 'CHZ-USDT', 'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT',
+      'WBNB-USDT'
+    ]
   },
   {
     name: 'CoinEx',
     api: 'https://api.coinex.com/v1/market/ticker/all',
-    symbols: Object.keys(pricesByExchange['CoinEx'] || {}),
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'BCH-USDT', 'LTC-USDT', 'DOGE-USDT', 'XRP-USDT', 'ADA-USDT', 'SOL-USDT', 'DOT-USDT',
+      'SHIB-USDT', 'AVAX-USDT', 'TRX-USDT', 'LINK-USDT', 'UNI-USDT', 'ATOM-USDT', 'XMR-USDT', 'ETC-USDT', 'FIL-USDT',
+      'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT', 'WLD-USDT', 'TIA-USDT',
+      'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT', 'SNX-USDT', '1INCH-USDT',
+      'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT', 'NEAR-USDT', 'ALGO-USDT',
+      'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT', 'ENJ-USDT', 'CHZ-USDT',
+      'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT', 'WBNB-USDT'
+    ]
   },
   {
     name: 'Bitget',
     api: 'https://api.bitget.com/api/spot/v1/market/tickers',
-    symbols: Object.keys(pricesByExchange['Bitget'] || {}),
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'BGB-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT',
+      'SHIB-USDT', 'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT', 'XMR-USDT',
+      'ETC-USDT', 'FIL-USDT', 'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT',
+      'WLD-USDT', 'TIA-USDT', 'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT',
+      'SNX-USDT', '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT',
+      'NEAR-USDT', 'ALGO-USDT', 'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT',
+      'ENJ-USDT', 'CHZ-USDT', 'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT',
+      'WBNB-USDT'
+    ]
   },
   {
     name: 'Bybit',
     api: 'https://api.bybit.com/v5/market/tickers?category=spot',
-    symbols: Object.keys(pricesByExchange['Bybit'] || {}),
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'BIT-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT',
+      'SHIB-USDT', 'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT', 'XMR-USDT',
+      'ETC-USDT', 'FIL-USDT', 'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT',
+      'WLD-USDT', 'TIA-USDT', 'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT',
+      'SNX-USDT', '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT',
+      'NEAR-USDT', 'ALGO-USDT', 'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT',
+      'ENJ-USDT', 'CHZ-USDT', 'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT',
+      'WBNB-USDT'
+    ]
   },
-  // "Weird" exchanges with normalizer functions
   {
     name: 'Kraken',
     api: 'https://api.kraken.com/0/public/Ticker',
-    symbols: Object.keys(pricesByExchange['Kraken'] || {}),
+    symbols: [
+      'BTC-USD', 'ETH-USD', 'USDT-USD', 'ADA-USD', 'XRP-USD', 'SOL-USD', 'DOGE-USD', 'MATIC-USD', 'DOT-USD',
+      'SHIB-USD', 'AVAX-USD', 'TRX-USD', 'LTC-USD', 'LINK-USD', 'BCH-USD', 'UNI-USD', 'ATOM-USD', 'XMR-USD',
+      'ETC-USD', 'FIL-USD', 'APT-USD', 'ARB-USD', 'OP-USD', 'SUI-USD', 'PEPE-USD', 'FLOKI-USD', 'INJ-USD',
+      'WLD-USD', 'TIA-USD', 'SEI-USD', 'STX-USD', 'RNDR-USD', 'MKR-USD', 'AAVE-USD', 'CRV-USD', 'COMP-USD',
+      'SNX-USD', '1INCH-USD', 'LDO-USD', 'DYDX-USD', 'GALA-USD', 'AXS-USD', 'MANA-USD', 'SAND-USD', 'GRT-USD',
+      'NEAR-USD', 'ALGO-USD', 'VET-USD', 'EOS-USD', 'XTZ-USD', 'KAVA-USD', 'CRO-USD', 'QNT-USD', 'RUNE-USD',
+      'ENJ-USD', 'CHZ-USD', 'XLM-USD', 'HBAR-USD', 'FTM-USD', 'ZIL-USD', 'DASH-USD', 'AR-USD', 'WETH-USD',
+      'WBNB-USD'
+    ],
     normalizeSymbol: normalizeKraken,
   },
   {
     name: 'Bitfinex',
     api: 'https://api-pub.bitfinex.com/v2/tickers?symbols=ALL',
-    symbols: Object.keys(pricesByExchange['Bitfinex'] || {}),
+    symbols: [
+      'BTC-USD', 'ETH-USD', 'USDT-USD', 'ADA-USD', 'XRP-USD', 'SOL-USD', 'DOGE-USD', 'MATIC-USD', 'DOT-USD',
+      'SHIB-USD', 'AVAX-USD', 'TRX-USD', 'LTC-USD', 'LINK-USD', 'BCH-USD', 'UNI-USD', 'ATOM-USD', 'XMR-USD',
+      'ETC-USD', 'FIL-USD', 'APT-USD', 'ARB-USD', 'OP-USD', 'SUI-USD', 'PEPE-USD', 'FLOKI-USD', 'INJ-USD',
+      'WLD-USD', 'TIA-USD', 'SEI-USD', 'STX-USD', 'RNDR-USD', 'MKR-USD', 'AAVE-USD', 'CRV-USD', 'COMP-USD',
+      'SNX-USD', '1INCH-USD', 'LDO-USD', 'DYDX-USD', 'GALA-USD', 'AXS-USD', 'MANA-USD', 'SAND-USD', 'GRT-USD',
+      'NEAR-USD', 'ALGO-USD', 'VET-USD', 'EOS-USD', 'XTZ-USD', 'KAVA-USD', 'CRO-USD', 'QNT-USD', 'RUNE-USD',
+      'ENJ-USD', 'CHZ-USD', 'XLM-USD', 'HBAR-USD', 'FTM-USD', 'ZIL-USD', 'DASH-USD', 'AR-USD', 'WETH-USD',
+      'WBNB-USD'
+    ],
     normalizeSymbol: normalizeBitfinex,
   },
   {
     name: 'Huobi',
     api: 'https://api.huobi.pro/market/tickers',
-    symbols: Object.keys(pricesByExchange['Huobi'] || {}),
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'HT-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT',
+      'SHIB-USDT', 'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT', 'XMR-USDT',
+      'ETC-USDT', 'FIL-USDT', 'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT',
+      'WLD-USDT', 'TIA-USDT', 'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT',
+      'SNX-USDT', '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT',
+      'NEAR-USDT', 'ALGO-USDT', 'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT',
+      'ENJ-USDT', 'CHZ-USDT', 'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT',
+      'WBNB-USDT'
+    ],
     normalizeSymbol: normalizeHuobi,
   },
-  // The rest (Coinbase, Bitrue, etc.) can stay dynamic or use pricesByExchange as before
   {
     name: 'Coinbase',
     api: 'https://api.coinbase.com/v2/prices',
-    symbols: Object.keys(pricesByExchange['Coinbase'] || {}),
+    symbols: [
+      'BTC-USD', 'ETH-USD', 'USDT-USD', 'ADA-USD', 'XRP-USD', 'SOL-USD', 'DOGE-USD', 'MATIC-USD', 'DOT-USD',
+      'SHIB-USD', 'AVAX-USD', 'TRX-USD', 'LTC-USD', 'LINK-USD', 'BCH-USD', 'UNI-USD', 'ATOM-USD', 'XMR-USD',
+      'ETC-USD', 'FIL-USD', 'APT-USD', 'ARB-USD', 'OP-USD', 'SUI-USD', 'PEPE-USD', 'FLOKI-USD', 'INJ-USD',
+      'WLD-USD', 'TIA-USD', 'SEI-USD', 'STX-USD', 'RNDR-USD', 'MKR-USD', 'AAVE-USD', 'CRV-USD', 'COMP-USD',
+      'SNX-USD', '1INCH-USD', 'LDO-USD', 'DYDX-USD', 'GALA-USD', 'AXS-USD', 'MANA-USD', 'SAND-USD', 'GRT-USD',
+      'NEAR-USD', 'ALGO-USD', 'VET-USD', 'EOS-USD', 'XTZ-USD', 'KAVA-USD', 'CRO-USD', 'QNT-USD', 'RUNE-USD',
+      'ENJ-USD', 'CHZ-USD', 'XLM-USD', 'HBAR-USD', 'FTM-USD', 'ZIL-USD', 'DASH-USD', 'AR-USD', 'WETH-USD',
+      'WBNB-USD'
+    ]
   },
   {
     name: 'Bitrue',
@@ -139,81 +244,204 @@ export const EXCHANGES = [
   {
     name: 'Phemex',
     api: 'https://api.phemex.com/md/spot/ticker/24hr/all',
-    symbols: Object.keys(pricesByExchange['Phemex'] || {})
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT',
+      'SHIB-USDT', 'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT',
+      'ETC-USDT', 'FIL-USDT', 'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT',
+      'INJ-USDT', 'WLD-USDT', 'TIA-USDT', 'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT',
+      'CRV-USDT', 'COMP-USDT', 'SNX-USDT', '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT',
+      'MANA-USDT', 'SAND-USDT', 'GRT-USDT', 'NEAR-USDT', 'ALGO-USDT', 'VET-USDT', 'EOS-USDT', 'XTZ-USDT',
+      'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT', 'ENJ-USDT', 'CHZ-USDT', 'XLM-USDT', 'HBAR-USDT',
+      'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT', 'WBNB-USDT'
+    ]
   },
   {
     name: 'Poloniex',
     api: 'https://api.poloniex.com/markets/ticker24h',
-    symbols: Object.keys(pricesByExchange['Poloniex'] || {})
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'TRX-USDT', 'XRP-USDT', 'DOGE-USDT', 'LTC-USDT', 'BCH-USDT', 'ADA-USDT', 'SOL-USDT',
+      'MATIC-USDT', 'DOT-USDT', 'SHIB-USDT', 'AVAX-USDT', 'LINK-USDT', 'UNI-USDT', 'ATOM-USDT', 'ETC-USDT',
+      'FIL-USDT', 'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT', 'WLD-USDT',
+      'TIA-USDT', 'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT', 'SNX-USDT',
+      '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT',
+      'NEAR-USDT', 'ALGO-USDT', 'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT',
+      'ENJ-USDT', 'CHZ-USDT', 'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT',
+      'WBNB-USDT'
+    ]
   },
   {
     name: 'Probit',
     api: 'https://api.probit.com/api/exchange/v1/ticker',
-    symbols: Object.keys(pricesByExchange['Probit'] || {})
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'XRP-USDT', 'ADA-USDT', 'DOGE-USDT', 'SOL-USDT', 'MATIC-USDT', 'DOT-USDT', 'SHIB-USDT',
+      'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'UNI-USDT', 'ATOM-USDT', 'ETC-USDT', 'FIL-USDT', 'APT-USDT',
+      'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT', 'WLD-USDT', 'TIA-USDT', 'SEI-USDT',
+      'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT', 'SNX-USDT', '1INCH-USDT', 'LDO-USDT',
+      'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT', 'NEAR-USDT', 'ALGO-USDT', 'VET-USDT',
+      'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT', 'ENJ-USDT', 'CHZ-USDT', 'XLM-USDT',
+      'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT', 'WBNB-USDT'
+    ]
   },
   {
     name: 'SushiSwap',
     api: 'https://api.1inch.dev/swap/v5.2/1/quote',
-    symbols: Object.keys(pricesByExchange['SushiSwap'] || {})
+    symbols: [
+      'ETH-USDT', 'USDC-USDT', 'WBTC-ETH', 'DAI-USDT', 'LINK-ETH', 'UNI-ETH', 'AAVE-ETH', 'MKR-ETH', 'CRV-ETH',
+      'COMP-ETH', 'SNX-ETH', '1INCH-ETH', 'LDO-ETH', 'DYDX-ETH', 'GALA-ETH', 'AXS-ETH', 'MANA-ETH', 'SAND-ETH',
+      'GRT-ETH', 'NEAR-ETH', 'ALGO-ETH', 'VET-ETH', 'EOS-ETH', 'XTZ-ETH', 'KAVA-ETH', 'CRO-ETH', 'QNT-ETH', 'RUNE-ETH',
+      'ENJ-ETH', 'CHZ-ETH', 'XLM-ETH', 'HBAR-ETH', 'FTM-ETH', 'ZIL-ETH', 'DASH-ETH', 'AR-ETH', 'WETH-ETH'
+    ]
   },
   {
     name: 'Uniswap',
     api: 'https://api.1inch.dev/swap/v5.2/1/quote',
-    symbols: Object.keys(pricesByExchange['Uniswap'] || {})
+    symbols: [
+      'ETH-USDT', 'USDC-USDT', 'WBTC-ETH', 'DAI-USDT', 'LINK-ETH', 'UNI-ETH', 'AAVE-ETH', 'MKR-ETH', 'CRV-ETH',
+      'COMP-ETH', 'SNX-ETH', '1INCH-ETH', 'LDO-ETH', 'DYDX-ETH', 'GALA-ETH', 'AXS-ETH', 'MANA-ETH', 'SAND-ETH',
+      'GRT-ETH', 'NEAR-ETH', 'ALGO-ETH', 'VET-ETH', 'EOS-ETH', 'XTZ-ETH', 'KAVA-ETH', 'CRO-ETH', 'QNT-ETH', 'RUNE-ETH',
+      'ENJ-ETH', 'CHZ-ETH', 'XLM-ETH', 'HBAR-ETH', 'FTM-ETH', 'ZIL-ETH', 'DASH-ETH', 'AR-ETH', 'WETH-ETH'
+    ]
   },
   {
     name: 'WhiteBIT',
     api: 'https://whitebit.com/api/v4/public/ticker',
-    symbols: Object.keys(pricesByExchange['WhiteBIT'] || {})
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT', 'SHIB-USDT',
+      'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT', 'ETC-USDT', 'FIL-USDT',
+      'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT', 'WLD-USDT', 'TIA-USDT',
+      'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT', 'SNX-USDT', '1INCH-USDT',
+      'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT', 'NEAR-USDT', 'ALGO-USDT',
+      'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT', 'ENJ-USDT', 'CHZ-USDT',
+      'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT', 'WBNB-USDT'
+    ]
   },
   {
     name: 'AscendEX',
     api: 'https://ascendex.com/api/pro/v1/ticker',
-    symbols: Object.keys(pricesByExchange['AscendEX'] || {})
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT', 'SHIB-USDT',
+      'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT', 'ETC-USDT', 'FIL-USDT',
+      'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT', 'WLD-USDT', 'TIA-USDT',
+      'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT', 'SNX-USDT', '1INCH-USDT',
+      'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT', 'NEAR-USDT', 'ALGO-USDT',
+      'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT', 'ENJ-USDT', 'CHZ-USDT',
+      'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT', 'WBNB-USDT'
+    ]
   },
   {
     name: 'BinanceUS',
     api: 'https://api.binance.us/api/v3/ticker/price',
-    symbols: Object.keys(pricesByExchange['BinanceUS'] || {})
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'BNB-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT',
+      'SHIB-USDT', 'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT', 'ETC-USDT',
+      'FIL-USDT', 'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT', 'WLD-USDT',
+      'TIA-USDT', 'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT', 'SNX-USDT',
+      '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT',
+      'NEAR-USDT', 'ALGO-USDT', 'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT',
+      'ENJ-USDT', 'CHZ-USDT', 'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT',
+      'WBNB-USDT'
+    ]
   },
   {
     name: 'Bitstamp',
     api: 'https://www.bitstamp.net/api/v2/ticker/',
-    symbols: Object.keys(pricesByExchange['Bitstamp'] || {})
+    symbols: [
+      'BTC-USD', 'ETH-USD', 'USDT-USD', 'ADA-USD', 'XRP-USD', 'SOL-USD', 'DOGE-USD', 'MATIC-USD', 'DOT-USD',
+      'SHIB-USD', 'AVAX-USD', 'TRX-USD', 'LTC-USD', 'LINK-USD', 'BCH-USD', 'UNI-USD', 'ATOM-USD', 'XMR-USD',
+      'ETC-USD', 'FIL-USD', 'APT-USD', 'ARB-USD', 'OP-USD', 'SUI-USD', 'PEPE-USD', 'FLOKI-USD', 'INJ-USD',
+      'WLD-USD', 'TIA-USD', 'SEI-USD', 'STX-USD', 'RNDR-USD', 'MKR-USD', 'AAVE-USD', 'CRV-USD', 'COMP-USD',
+      'SNX-USD', '1INCH-USD', 'LDO-USD', 'DYDX-USD', 'GALA-USD', 'AXS-USD', 'MANA-USD', 'SAND-USD', 'GRT-USD',
+      'NEAR-USD', 'ALGO-USD', 'VET-USD', 'EOS-USD', 'XTZ-USD', 'KAVA-USD', 'CRO-USD', 'QNT-USD', 'RUNE-USD',
+      'ENJ-USD', 'CHZ-USD', 'XLM-USD', 'HBAR-USD', 'FTM-USD', 'ZIL-USD', 'DASH-USD', 'AR-USD', 'WETH-USD',
+      'WBNB-USD'
+    ]
   },
   {
     name: 'CoinbasePro',
     api: 'https://api.exchange.coinbase.com/products',
-    symbols: Object.keys(pricesByExchange['CoinbasePro'] || {})
+    symbols: [
+      'BTC-USD', 'ETH-USD', 'USDT-USD', 'ADA-USD', 'XRP-USD', 'SOL-USD', 'DOGE-USD', 'MATIC-USD', 'DOT-USD',
+      'SHIB-USD', 'AVAX-USD', 'TRX-USD', 'LTC-USD', 'LINK-USD', 'BCH-USD', 'UNI-USD', 'ATOM-USD', 'ETC-USD',
+      'FIL-USD', 'APT-USD', 'ARB-USD', 'OP-USD', 'SUI-USD', 'PEPE-USD', 'FLOKI-USD', 'INJ-USD', 'WLD-USD',
+      'TIA-USD', 'SEI-USD', 'STX-USD', 'RNDR-USD', 'MKR-USD', 'AAVE-USD', 'CRV-USD', 'COMP-USD', 'SNX-USD',
+      '1INCH-USD', 'LDO-USD', 'DYDX-USD', 'GALA-USD', 'AXS-USD', 'MANA-USD', 'SAND-USD', 'GRT-USD', 'NEAR-USD',
+      'ALGO-USD', 'VET-USD', 'EOS-USD', 'XTZ-USD', 'KAVA-USD', 'CRO-USD', 'QNT-USD', 'RUNE-USD', 'ENJ-USD',
+      'CHZ-USD', 'XLM-USD', 'HBAR-USD', 'FTM-USD', 'ZIL-USD', 'DASH-USD', 'AR-USD', 'WETH-USD', 'WBNB-USD'
+    ]
   },
   {
     name: 'CryptoCom',
     api: 'https://api.crypto.com/v2/public/get-ticker',
-    symbols: Object.keys(pricesByExchange['CryptoCom'] || {})
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT', 'SHIB-USDT',
+      'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT', 'ETC-USDT', 'FIL-USDT',
+      'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT', 'WLD-USDT', 'TIA-USDT',
+      'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT', 'SNX-USDT', '1INCH-USDT',
+      'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT', 'NEAR-USDT', 'ALGO-USDT',
+      'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT', 'ENJ-USDT', 'CHZ-USDT',
+      'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT', 'WBNB-USDT'
+    ]
   },
   {
     name: 'Gemini',
     api: 'https://api.gemini.com/v1/symbols',
-    symbols: Object.keys(pricesByExchange['Gemini'] || {})
+    symbols: [
+      'BTC-USD', 'ETH-USD', 'SOL-USD', 'DOGE-USD', 'MATIC-USD', 'DOT-USD', 'SHIB-USD', 'AVAX-USD', 'TRX-USD',
+      'LTC-USD', 'LINK-USD', 'BCH-USD', 'UNI-USD', 'ATOM-USD', 'ETC-USD', 'FIL-USD', 'APT-USD', 'ARB-USD',
+      'OP-USD', 'SUI-USD', 'PEPE-USD', 'FLOKI-USD', 'INJ-USD', 'WLD-USD', 'TIA-USD', 'SEI-USD', 'STX-USD',
+      'RNDR-USD', 'MKR-USD', 'AAVE-USD', 'CRV-USD', 'COMP-USD', 'SNX-USD', '1INCH-USD', 'LDO-USD', 'DYDX-USD',
+      'GALA-USD', 'AXS-USD', 'MANA-USD', 'SAND-USD', 'GRT-USD', 'NEAR-USD', 'ALGO-USD', 'VET-USD', 'EOS-USD',
+      'XTZ-USD', 'KAVA-USD', 'CRO-USD', 'QNT-USD', 'RUNE-USD', 'ENJ-USD', 'CHZ-USD', 'XLM-USD', 'HBAR-USD',
+      'FTM-USD', 'ZIL-USD', 'DASH-USD', 'AR-USD', 'WETH-USD', 'WBNB-USD'
+    ]
   },
   {
     name: 'HitBTC',
     api: 'https://api.hitbtc.com/api/3/public/ticker',
-    symbols: Object.keys(pricesByExchange['HitBTC'] || {})
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT', 'SHIB-USDT',
+      'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT', 'ETC-USDT', 'FIL-USDT',
+      'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT', 'WLD-USDT', 'TIA-USDT',
+      'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT', 'SNX-USDT', '1INCH-USDT',
+      'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT', 'NEAR-USDT', 'ALGO-USDT',
+      'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT', 'ENJ-USDT', 'CHZ-USDT',
+      'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT', 'WBNB-USDT'
+    ]
   },
   {
     name: 'LBANK',
     api: 'https://api.lbank.info/v2/ticker.do',
-    symbols: Object.keys(pricesByExchange['LBANK'] || {})
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT', 'SHIB-USDT',
+      'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT', 'ETC-USDT', 'FIL-USDT',
+      'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT', 'WLD-USDT', 'TIA-USDT',
+      'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT', 'SNX-USDT', '1INCH-USDT',
+      'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT', 'NEAR-USDT', 'ALGO-USDT',
+      'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT', 'ENJ-USDT', 'CHZ-USDT',
+      'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT', 'WBNB-USDT'
+    ]
   },
   {
     name: 'OneInch',
     api: 'https://api.1inch.dev/swap/v5.2/1/quote',
-    symbols: Object.keys(pricesByExchange['OneInch'] || {})
+    symbols: [
+      'ETH-USDT', 'USDC-USDT', 'WBTC-ETH', 'DAI-USDT', 'LINK-ETH', 'UNI-ETH', 'AAVE-ETH', 'MKR-ETH', 'CRV-ETH',
+      'COMP-ETH', 'SNX-ETH', '1INCH-ETH', 'LDO-ETH', 'DYDX-ETH', 'GALA-ETH', 'AXS-ETH', 'MANA-ETH', 'SAND-ETH',
+      'GRT-ETH', 'NEAR-ETH', 'ALGO-ETH', 'VET-ETH', 'EOS-ETH', 'XTZ-ETH', 'KAVA-ETH', 'CRO-ETH', 'QNT-ETH', 'RUNE-ETH',
+      'ENJ-ETH', 'CHZ-ETH', 'XLM-ETH', 'HBAR-ETH', 'FTM-ETH', 'ZIL-ETH', 'DASH-ETH', 'AR-ETH', 'WETH-ETH'
+    ]
   },
   {
     name: 'PancakeSwap',
     api: 'https://api.1inch.dev/swap/v5.2/56/quote',
-    symbols: Object.keys(pricesByExchange['PancakeSwap'] || {})
+    symbols: [
+      'BNB-USDT', 'CAKE-USDT', 'BTCB-USDT', 'ETH-USDT', 'USDC-USDT', 'BUSD-USDT', 'ADA-USDT', 'XRP-USDT', 'DOGE-USDT',
+      'MATIC-USDT', 'DOT-USDT', 'SHIB-USDT', 'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'UNI-USDT', 'ATOM-USDT',
+      'ETC-USDT', 'FIL-USDT', 'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT',
+      'WLD-USDT', 'TIA-USDT', 'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT',
+      'SNX-USDT', '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT',
+      'NEAR-USDT', 'ALGO-USDT', 'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT',
+      'ENJ-USDT', 'CHZ-USDT', 'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT'
+    ]
   }
 ];
