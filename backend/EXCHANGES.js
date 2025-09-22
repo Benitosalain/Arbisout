@@ -1,196 +1,140 @@
-import { pricesByExchange } from "./symbol-mapping.js";
+import { pricesByExchange, normalizeKraken, normalizeBitfinex, normalizeHuobi } from "./symbol-mapping.js";
 
 export const EXCHANGES = [
   {
     name: 'Binance',
-    api: 'https://api.binance.com/api/v3/ticker/price?symbol=',
-    symbols: [
-      'BTC-USDT', 'ETH-USDT', 'LTC-USDT', 'BCH-USDT', 'BNB-USDT', 'SOL-USDT', 'ADA-USDT', 'XRP-USDT',
-      'DOT-USDT', 'DOGE-USDT', 'AVAX-USDT', 'POL-USDT',
-      'SHIB-USDT', 'TRX-USDT', 'LINK-USDT', 'ATOM-USDT',
-      'XMR-USDT', 'WBTC-USDT', 'UNI-USDT', 'XTZ-USDT', 'FIL-USDT', 'EOS-USDT', 'AAVE-USDT', 'SAND-USDT',
-      'APE-USDT', 'GRT-USDT', 'ETC-USDT', 'NEAR-USDT', 'EGLD-USDT', 'ZEC-USDT', 'STX-USDT', 'ALGO-USDT',
-      'SNX-USDT', 'RUNE-USDT', 'MKR-USDT', 'CRV-USDT', 'DYDX-USDT', 'LDO-USDT', '1INCH-USDT', 'COMP-USDT',
-      'ARB-USDT', 'TON-USDT', 'OP-USDT', 'USDC-USDT', 'DAI-USDT',
-      'BTC-USD', 'ETH-USD', 'LTC-USD', 'SOL-USD',
-      // Cross-asset for triangles:
-      'ETH-BTC', 'LTC-BTC', 'XRP-BTC', 'BNB-BTC', 'SOL-BTC', 'ADA-BTC', 'ARB-BTC', 'TON-BTC', 'OP-BTC'
-    ]
-  },
-  {
-    name: 'Kraken',
-    api: 'https://api.kraken.com/0/public/Ticker?pair=',
-    symbols: [
-      'BTC-USD', 'ETH-USD', 'LTC-USD', 'XRP-USD', 'BCH-USD', 'SOL-USD', 'ADA-USD', 'DOT-USD',
-      'DOGE-USD', 'AVAX-USD', 'MATIC-USD', 'TRX-USD', 'LINK-USD', 'ATOM-USD', 'UNI-USD', 'XTZ-USD',
-      'FIL-USD', 'EOS-USD', 'AAVE-USD', 'ETC-USD', 'NEAR-USD', 'ALGO-USD', 'ETH-BTC',
-      // Additional pairs from symbols.json
-      'COMP-USDT', 'MKR-USDT', 'ZEC-USDT',
-      'BTC-EUR', 'ETH-EUR', 'LTC-EUR',
-      'BTC-GBP', 'ETH-GBP', 'LTC-GBP',
-      'BTC-JPY', 'ETH-JPY', 'LTC-JPY',
-    ]
-  },
-  {
-    name: 'Bitfinex',
-    api: 'https://api.bitfinex.com/v1/pubticker/',
-    symbols: [
-      'BTC-USD', 'ETH-USD', 'LTC-USD', 'XRP-USD', 'BCH-USD', 'SOL-USD', 'ADA-USD', 'DOT-USD',
-      'DOGE-USD', 'AVAX-USD', 'MATIC-USD', 'TRX-USD', 'LINK-USD', 'ATOM-USD', 'UNI-USD', 'XTZ-USD',
-      'FIL-USD', 'EOS-USD', 'AAVE-USD', 'ETC-USD', 'NEAR-USD', 'ALGO-USD', 'ETH-BTC',
-      'COMP-USDT', 'MKR-USDT',
-    ]
-  },
-  {
-    name: 'Huobi',
-    api: 'https://api.huobi.pro/market/detail/merged?symbol=',
-    symbols: [
-      'BTC-USDT', 'ETH-USDT', 'LTC-USDT', 'BCH-USDT', 'BNB-USDT', 'SOL-USDT', 'ADA-USDT', 'XRP-USDT',
-      'DOT-USDT', 'DOGE-USDT', 'AVAX-USDT', 'MATIC-USDT', 'SHIB-USDT', 'TRX-USDT', 'LINK-USDT', 'ATOM-USDT',
-      'UNI-USDT', 'XTZ-USDT', 'FIL-USDT', 'EOS-USDT', 'AAVE-USDT', 'ETC-USDT', 'NEAR-USDT', 'ALGO-USDT',
-      'ETH-BTC', 'LTC-BTC', 'XRP-BTC', 'SOL-BTC', 'ADA-BTC',
-      'COMP-USDT', 'MKR-USDT',
-    ]
-  },
-  {
-    name: 'OKEx',
-    api: 'https://www.okex.com/api/v5/market/ticker?instId=',
-    symbols: [
-      'BTC-USDT', 'ETH-USDT', 'LTC-USDT', 'BCH-USDT', 'BNB-USDT', 'SOL-USDT', 'ADA-USDT', 'XRP-USDT',
-      'DOT-USDT', 'DOGE-USDT', 'AVAX-USDT', 'MATIC-USDT', 'SHIB-USDT', 'TRX-USDT', 'LINK-USDT', 'ATOM-USDT',
-      'UNI-USDT', 'XTZ-USDT', 'FIL-USDT', 'EOS-USDT', 'AAVE-USDT', 'SAND-USDT', 'APE-USDT', 'GRT-USDT',
-      'ETC-USDT', 'NEAR-USDT', 'EGLD-USDT', 'ZEC-USDT', 'STX-USDT', 'ALGO-USDT', 'SNX-USDT', 'RUNE-USDT',
-      'MKR-USDT', 'CRV-USDT', 'DYDX-USDT', 'LDO-USDT', '1INCH-USDT', 'COMP-USDT', 'ETH-BTC',
-      'ARB-USDT', 'ARB-BTC', 'OP-USDT', 'OP-BTC', 'TON-USDT', 'TON-BTC',
-      'OKB-USDT', 'OKB-BTC', 'OKB-ETH',
-      'KCS-USDT', 'KCS-BTC', 'KCS-ETH',
-      'HT-USDT', 'HT-BTC', 'HT-ETH',
-      'DASH-USDT', 'DASH-BTC', 'DASH-ETH',
-      'MANA-USDT', 'MANA-BTC', 'MANA-ETH',
-      'AXS-USDT', 'AXS-BTC', 'AXS-ETH',
-      'GALA-USDT', 'GALA-BTC', 'GALA-ETH',
-      'AR-USDT', 'AR-BTC', 'AR-ETH',
-      'LTC-BTC', 'XRP-BTC', 'BNB-BTC', 'SOL-BTC', 'ADA-BTC', 'WBTC-USDT'
-    ]
-  },
-  {
-    name: 'Gate.io',
-    api: 'https://api.gateio.ws/api/v4/spot/tickers?currency_pair=',
-    symbols: [
-      'BTC-USDT', 'ETH-USDT', 'LTC-USDT', 'BCH-USDT', 'BNB-USDT', 'SOL-USDT', 'ADA-USDT', 'XRP-USDT',
-      'DOT-USDT', 'DOGE-USDT', 'AVAX-USDT', 'MATIC-USDT', 'SHIB-USDT', 'TRX-USDT', 'LINK-USDT', 'ATOM-USDT',
-      'UNI-USDT', 'XTZ-USDT', 'FIL-USDT', 'EOS-USDT', 'AAVE-USDT', 'SAND-USDT', 'APE-USDT', 'GRT-USDT',
-      'ETC-USDT', 'NEAR-USDT', 'EGLD-USDT', 'ZEC-USDT', 'STX-USDT', 'ALGO-USDT', 'SNX-USDT', 'RUNE-USDT',
-      'MKR-USDT', 'CRV-USDT', 'DYDX-USDT', 'LDO-USDT', '1INCH-USDT', 'COMP-USDT', 'ETH-BTC'
-    ]
+    api: 'https://api.binance.com/api/v3/ticker/price',
+    symbols: Object.keys(pricesByExchange['Binance'] || {}),
   },
   {
     name: 'KuCoin',
-    api: 'https://api.kucoin.com/api/v1/market/orderbook/level1?symbol=',
-    symbols: [
-      'BTC-USDT', 'ETH-USDT', 'LTC-USDT', 'BCH-USDT', 'BNB-USDT', 'SOL-USDT', 'ADA-USDT', 'XRP-USDT',
-      'DOT-USDT', 'DOGE-USDT', 'AVAX-USDT', 'MATIC-USDT', 'SHIB-USDT', 'TRX-USDT', 'LINK-USDT', 'ATOM-USDT',
-      'UNI-USDT', 'XTZ-USDT', 'FIL-USDT', 'EOS-USDT', 'AAVE-USDT', 'SAND-USDT', 'APE-USDT', 'GRT-USDT',
-      'ETC-USDT', 'NEAR-USDT', 'EGLD-USDT', 'ZEC-USDT', 'STX-USDT', 'ALGO-USDT', 'SNX-USDT', 'RUNE-USDT',
-      'MKR-USDT', 'CRV-USDT', 'DYDX-USDT', 'LDO-USDT', '1INCH-USDT', 'COMP-USDT', 'ETH-BTC',
-      'ARB-USDT', 'ARB-BTC', 'TON-USDT', 'TON-BTC', 'OP-USDT', 'OP-BTC',
-      'KCS-USDT', 'KCS-BTC', 'KCS-ETH',
-    ]
+    api: 'https://api.kucoin.com/api/v1/market/allTickers',
+    symbols: Object.keys(pricesByExchange['KuCoin'] || {}),
   },
   {
-    name: 'Bitstamp',
-    api: 'https://www.bitstamp.net/api/v2/ticker/',
-    symbols: [
-      'BTC-USD', 'ETH-USD', 'LTC-USD', 'XRP-USD', 'BCH-USD', 'SOL-USD', 'ADA-USD', 'DOT-USD',
-      'DOGE-USD', 'AVAX-USD', 'MATIC-USD', 'TRX-USD', 'LINK-USD', 'UNI-USD', 'XTZ-USD', 'FIL-USD',
-      'EOS-USD', 'AAVE-USD', 'ETC-USD', 'ALGO-USD', 'ETH-BTC',
-      'BTC-EUR', 'ETH-EUR', 'LTC-EUR',
-    ]
+    name: 'OKEx',
+    api: 'https://www.okx.com/api/v5/market/tickers?instType=SPOT',
+    symbols: Object.keys(pricesByExchange['OKEx'] || {}),
   },
   {
-    name: 'Gemini',
-    api: 'https://api.gemini.com/v1/pubticker/',
-    symbols: [
-      'BTC-USD', 'ETH-USD', 'LTC-USD', 'BCH-USD', 'SOL-USD', 'ADA-USD', 'XRP-USD', 'DOT-USD',
-      'DOGE-USD', 'MATIC-USD', 'LINK-USD', 'UNI-USD', 'XTZ-USD', 'FIL-USD', 'EOS-USD', 'AAVE-USD',
-      'ETC-USD', 'ALGO-USD', 'ETH-BTC',
-    ]
+    name: 'Gate.io',
+    api: 'https://api.gateio.ws/api/v4/spot/tickers',
+    symbols: Object.keys(pricesByExchange['Gate.io'] || {}),
   },
   {
-    name: 'HitBTC',
-    api: 'https://api.hitbtc.com/api/3/public/price/ticker?symbols=',
-    symbols: [
-      'BTC-USDT', 'ETH-USDT', 'LTC-USDT', 'BCH-USDT', 'BNB-USDT', 'SOL-USDT', 'ADA-USDT', 'XRP-USDT',
-      'DOT-USDT', 'DOGE-USDT', 'AVAX-USDT', 'MATIC-USDT', 'TRX-USDT', 'LINK-USDT', 'ATOM-USDT',
-      'UNI-USDT', 'XTZ-USDT', 'FIL-USDT', 'EOS-USDT', 'AAVE-USDT', 'ETC-USDT', 'NEAR-USDT', 'ALGO-USDT',
-      'ETH-BTC'
-    ]
+    name: 'MEXC',
+    api: 'https://api.mexc.com/api/v3/ticker/price',
+    symbols: Object.keys(pricesByExchange['MEXC'] || {}),
   },
   {
     name: 'CoinEx',
-    api: 'https://api.coinex.com/v1/market/ticker?market=',
-    symbols: [
-      'BTC-USDT', 'ETH-USDT', 'LTC-USDT', 'BCH-USDT', 'BNB-USDT', 'SOL-USDT', 'ADA-USDT', 'XRP-USDT',
-      'DOT-USDT', 'DOGE-USDT', 'AVAX-USDT', 'MATIC-USDT', 'TRX-USDT', 'LINK-USDT', 'ATOM-USDT',
-      'UNI-USDT', 'XTZ-USDT', 'FIL-USDT', 'EOS-USDT', 'AAVE-USDT', 'ETC-USDT', 'NEAR-USDT', 'ALGO-USDT',
-      'ETH-BTC',
-    ]
-  },
-  // For all other exchanges, use dynamic expansion:
-  {
-    name: 'AscendEX',
-    api: 'https://ascendex.com/api/pro/v1/ticker',
-    symbols: Object.keys(pricesByExchange['AscendEX'] || {})
-  },
-  {
-    name: 'BinanceUS',
-    api: 'https://api.binance.us/api/v3/ticker/price',
-    symbols: Object.keys(pricesByExchange['BinanceUS'] || {})
+    api: 'https://api.coinex.com/v1/market/ticker/all',
+    symbols: Object.keys(pricesByExchange['CoinEx'] || {}),
   },
   {
     name: 'Bitget',
     api: 'https://api.bitget.com/api/spot/v1/market/tickers',
-    symbols: Object.keys(pricesByExchange['Bitget'] || {})
+    symbols: Object.keys(pricesByExchange['Bitget'] || {}),
   },
   {
     name: 'Bybit',
     api: 'https://api.bybit.com/v5/market/tickers?category=spot',
-    symbols: Object.keys(pricesByExchange['Bybit'] || {})
+    symbols: Object.keys(pricesByExchange['Bybit'] || {}),
   },
+  // "Weird" exchanges with normalizer functions
+  {
+    name: 'Kraken',
+    api: 'https://api.kraken.com/0/public/Ticker',
+    symbols: Object.keys(pricesByExchange['Kraken'] || {}),
+    normalizeSymbol: normalizeKraken,
+  },
+  {
+    name: 'Bitfinex',
+    api: 'https://api-pub.bitfinex.com/v2/tickers?symbols=ALL',
+    symbols: Object.keys(pricesByExchange['Bitfinex'] || {}),
+    normalizeSymbol: normalizeBitfinex,
+  },
+  {
+    name: 'Huobi',
+    api: 'https://api.huobi.pro/market/tickers',
+    symbols: Object.keys(pricesByExchange['Huobi'] || {}),
+    normalizeSymbol: normalizeHuobi,
+  },
+  // The rest (Coinbase, Bitrue, etc.) can stay dynamic or use pricesByExchange as before
   {
     name: 'Coinbase',
     api: 'https://api.coinbase.com/v2/prices',
-    symbols: Object.keys(pricesByExchange['Coinbase'] || {})
+    symbols: Object.keys(pricesByExchange['Coinbase'] || {}),
   },
   {
     name: 'Bitrue',
     api: 'https://www.bitrue.com/api/v1/ticker/price?symbol=',
-    symbols: Object.keys(pricesByExchange['Bitrue'] || {})
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'DOGE-USDT', 'SHIB-USDT',
+      'ARB-USDT', 'OP-USDT', 'MATIC-USDT', 'AVAX-USDT', 'DOT-USDT', 'ATOM-USDT', 'NEAR-USDT', 'ALGO-USDT',
+      'UNI-USDT', 'AAVE-USDT', 'CRV-USDT', 'MKR-USDT', 'COMP-USDT', 'SNX-USDT', '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT',
+      'APT-USDT', 'SUI-USDT', 'SEI-USDT', 'TIA-USDT', 'INJ-USDT', 'WLD-USDT',
+      'OKB-USDT', 'KCS-USDT', 'HT-USDT', 'DASH-USDT', 'MANA-USDT', 'AXS-USDT', 'GALA-USDT', 'AR-USDT',
+      'WETH-USDT', 'WBNB-USDT',
+      // Add BTC and ETH pairs if supported:
+      'PEPE-BTC', 'PEPE-ETH', 'FLOKI-BTC', 'FLOKI-ETH', 'DOGE-ETH', 'SHIB-ETH',
+      'UNI-BTC', 'UNI-ETH', 'AAVE-BTC', 'AAVE-ETH', 'CRV-BTC', 'CRV-ETH', 'MKR-BTC', 'MKR-ETH',
+      'COMP-BTC', 'COMP-ETH', 'SNX-BTC', 'SNX-ETH', '1INCH-BTC', '1INCH-ETH', 'LDO-BTC', 'LDO-ETH', 'DYDX-BTC', 'DYDX-ETH'
+    ]
   },
   {
     name: 'BithumbGlobal',
     api: 'https://global-openapi.bithumb.pro/openapi/v1/spot/ticker?symbol=',
-    symbols: Object.keys(pricesByExchange['BithumbGlobal'] || {})
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'SHIB-USDT', 'MATIC-USDT', 'AVAX-USDT',
+      'DOT-USDT', 'ATOM-USDT', 'NEAR-USDT', 'ALGO-USDT', 'UNI-USDT', 'AAVE-USDT', 'CRV-USDT', 'MKR-USDT', 'COMP-USDT',
+      'SNX-USDT', '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'APT-USDT', 'SUI-USDT', 'SEI-USDT', 'TIA-USDT', 'INJ-USDT',
+      'WLD-USDT', 'OKB-USDT', 'KCS-USDT', 'HT-USDT', 'DASH-USDT', 'MANA-USDT', 'AXS-USDT', 'GALA-USDT', 'AR-USDT',
+      'WETH-USDT', 'WBNB-USDT'
+    ]
   },
   {
     name: 'Bitmart',
     api: 'https://api.bitmart.com/v2/ticker?symbol=',
-    symbols: Object.keys(pricesByExchange['Bitmart'] || {})
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'SHIB-USDT', 'ARB-USDT', 'OP-USDT',
+      'MATIC-USDT', 'AVAX-USDT', 'DOT-USDT', 'ATOM-USDT', 'NEAR-USDT', 'ALGO-USDT', 'UNI-USDT', 'AAVE-USDT',
+      'CRV-USDT', 'MKR-USDT', 'COMP-USDT', 'SNX-USDT', '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'APT-USDT', 'SUI-USDT',
+      'SEI-USDT', 'TIA-USDT', 'INJ-USDT', 'WLD-USDT', 'OKB-USDT', 'KCS-USDT', 'HT-USDT', 'DASH-USDT', 'MANA-USDT',
+      'AXS-USDT', 'GALA-USDT', 'AR-USDT', 'WETH-USDT', 'WBNB-USDT',
+      // Add BTC and ETH pairs if supported:
+      'PEPE-BTC', 'PEPE-ETH', 'FLOKI-BTC', 'FLOKI-ETH', 'DOGE-ETH', 'SHIB-ETH'
+    ]
   },
   {
     name: 'XTcom',
     api: 'https://sapi.xt.com/v4/public/ticker/price?symbol=',
-    symbols: Object.keys(pricesByExchange['XTcom'] || {})
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'SHIB-USDT', 'ARB-USDT', 'OP-USDT',
+      'MATIC-USDT', 'AVAX-USDT', 'DOT-USDT', 'ATOM-USDT', 'NEAR-USDT', 'ALGO-USDT', 'UNI-USDT', 'AAVE-USDT',
+      'CRV-USDT', 'MKR-USDT', 'COMP-USDT', 'SNX-USDT', '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'APT-USDT', 'SUI-USDT',
+      'SEI-USDT', 'TIA-USDT', 'INJ-USDT', 'WLD-USDT', 'OKB-USDT', 'KCS-USDT', 'HT-USDT', 'DASH-USDT', 'MANA-USDT',
+      'AXS-USDT', 'GALA-USDT', 'AR-USDT', 'WETH-USDT', 'WBNB-USDT'
+    ]
   },
   {
     name: 'Deribit',
     api: 'https://www.deribit.com/api/v2/public/ticker?instrument_name=',
-    symbols: Object.keys(pricesByExchange['Deribit'] || {})
+    symbols: [
+      'BTC-USD', 'ETH-USD', 'BTC-PERPETUAL', 'ETH-PERPETUAL'
+      // Add more if Deribit supports them
+    ]
   },
   {
     name: 'CryptoComEnhanced',
     api: 'https://api.crypto.com/v2/public/get-ticker?instrument_name=',
-    symbols: Object.keys(pricesByExchange['CryptoComEnhanced'] || {})
+    symbols: [
+      'BTC-USDT', 'ETH-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'SHIB-USDT', 'ARB-USDT', 'OP-USDT',
+      'MATIC-USDT', 'AVAX-USDT', 'DOT-USDT', 'ATOM-USDT', 'NEAR-USDT', 'ALGO-USDT', 'UNI-USDT', 'AAVE-USDT',
+      'CRV-USDT', 'MKR-USDT', 'COMP-USDT', 'SNX-USDT', '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'APT-USDT', 'SUI-USDT',
+      'SEI-USDT', 'TIA-USDT', 'INJ-USDT', 'WLD-USDT', 'OKB-USDT', 'KCS-USDT', 'HT-USDT', 'DASH-USDT', 'MANA-USDT',
+      'AXS-USDT', 'GALA-USDT', 'AR-USDT', 'WETH-USDT', 'WBNB-USDT'
+    ]
   },
   {
     name: 'Phemex',
@@ -223,18 +167,53 @@ export const EXCHANGES = [
     symbols: Object.keys(pricesByExchange['WhiteBIT'] || {})
   },
   {
-    name: 'LBank',
-    api: 'https://api.lbank.com/v2/ticker/24hr.do?symbol=',
-    symbols: Object.keys(pricesByExchange['LBank'] || {})
-  },
-  {
-    name: 'MEXC',
-    api: 'https://api.mexc.com/api/v3/ticker/price?symbol=',
-    symbols: Object.keys(pricesByExchange['MEXC'] || {})
-  },
-  {
     name: 'AscendEX',
     api: 'https://ascendex.com/api/pro/v1/ticker',
     symbols: Object.keys(pricesByExchange['AscendEX'] || {})
+  },
+  {
+    name: 'BinanceUS',
+    api: 'https://api.binance.us/api/v3/ticker/price',
+    symbols: Object.keys(pricesByExchange['BinanceUS'] || {})
+  },
+  {
+    name: 'Bitstamp',
+    api: 'https://www.bitstamp.net/api/v2/ticker/',
+    symbols: Object.keys(pricesByExchange['Bitstamp'] || {})
+  },
+  {
+    name: 'CoinbasePro',
+    api: 'https://api.exchange.coinbase.com/products',
+    symbols: Object.keys(pricesByExchange['CoinbasePro'] || {})
+  },
+  {
+    name: 'CryptoCom',
+    api: 'https://api.crypto.com/v2/public/get-ticker',
+    symbols: Object.keys(pricesByExchange['CryptoCom'] || {})
+  },
+  {
+    name: 'Gemini',
+    api: 'https://api.gemini.com/v1/symbols',
+    symbols: Object.keys(pricesByExchange['Gemini'] || {})
+  },
+  {
+    name: 'HitBTC',
+    api: 'https://api.hitbtc.com/api/3/public/ticker',
+    symbols: Object.keys(pricesByExchange['HitBTC'] || {})
+  },
+  {
+    name: 'LBANK',
+    api: 'https://api.lbank.info/v2/ticker.do',
+    symbols: Object.keys(pricesByExchange['LBANK'] || {})
+  },
+  {
+    name: 'OneInch',
+    api: 'https://api.1inch.dev/swap/v5.2/1/quote',
+    symbols: Object.keys(pricesByExchange['OneInch'] || {})
+  },
+  {
+    name: 'PancakeSwap',
+    api: 'https://api.1inch.dev/swap/v5.2/56/quote',
+    symbols: Object.keys(pricesByExchange['PancakeSwap'] || {})
   }
 ];
