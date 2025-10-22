@@ -45,10 +45,10 @@ function Scanner() {
       setError(null);
 
       const THRESHOLDS = {
-        cross: 0.5,      // Lowered from 1%
+        cross: 1.5,      // Lowered from 1%
         inter: 0.3,
         triangular: 0.1,
-        stat: 1.5,       // Lowered from 2% to see more opportunities
+        stat: 0.5,       // Lowered from 2% to see more opportunities
         funding: 5       // Lowered from 10% to see more opportunities
       };
 
