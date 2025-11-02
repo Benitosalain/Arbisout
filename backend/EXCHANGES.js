@@ -327,20 +327,7 @@ export const EXCHANGES = [
       'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT', 'WBNB-USDT'
     ]
   },
-  {
-    name: 'BinanceUS',
-    api: 'https://api.binance.us/api/v3/ticker/price',
-    symbols: [
-      'BTC-USDT', 'ETH-USDT', 'BNB-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'MATIC-USDT', 'DOT-USDT',
-      'SHIB-USDT', 'AVAX-USDT', 'TRX-USDT', 'LTC-USDT', 'LINK-USDT', 'BCH-USDT', 'UNI-USDT', 'ATOM-USDT', 'ETC-USDT',
-      'FIL-USDT', 'APT-USDT', 'ARB-USDT', 'OP-USDT', 'SUI-USDT', 'PEPE-USDT', 'FLOKI-USDT', 'INJ-USDT', 'WLD-USDT',
-      'TIA-USDT', 'SEI-USDT', 'STX-USDT', 'RNDR-USDT', 'MKR-USDT', 'AAVE-USDT', 'CRV-USDT', 'COMP-USDT', 'SNX-USDT',
-      '1INCH-USDT', 'LDO-USDT', 'DYDX-USDT', 'GALA-USDT', 'AXS-USDT', 'MANA-USDT', 'SAND-USDT', 'GRT-USDT',
-      'NEAR-USDT', 'ALGO-USDT', 'VET-USDT', 'EOS-USDT', 'XTZ-USDT', 'KAVA-USDT', 'CRO-USDT', 'QNT-USDT', 'RUNE-USDT',
-      'ENJ-USDT', 'CHZ-USDT', 'XLM-USDT', 'HBAR-USDT', 'FTM-USDT', 'ZIL-USDT', 'DASH-USDT', 'AR-USDT', 'WETH-USDT',
-      'WBNB-USDT'
-    ]
-  },
+  
   {
     name: 'Bitstamp',
     api: 'https://www.bitstamp.net/api/v2/ticker/',
