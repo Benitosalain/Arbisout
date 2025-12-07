@@ -2,7 +2,7 @@
 
 export async function fetchBithumbGlobalTicker(symbol) {
   // Bithumb Global uses "BTC-USDT" format
-  const url = `https://global-openapi.bithumb.pro/openapi/v1/spot/ticker?symbol=${symbol}`;
+  const url = `https://api.bithumb.com/v1/spot/ticker?symbol=${symbol}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Bithumb Global API error: ${res.status}`);
   const data = await res.json();
@@ -12,4 +12,5 @@ export async function fetchBithumbGlobalTicker(symbol) {
 export function bithumbGlobalSymbol(standardSymbol) {
   // Bithumb Global uses "BTC-USDT" format
   return standardSymbol;
+
 }
