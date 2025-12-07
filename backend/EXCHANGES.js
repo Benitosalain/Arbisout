@@ -189,7 +189,7 @@ export const EXCHANGES = [
   },
   {
     name: 'BithumbGlobal',
-    api: 'https://global-openapi.bithumb.pro/openapi/v1/spot/ticker?symbol=',
+    api: 'https://api.bithumb.com/v1/market/all/ticker?symbol=',
     symbols: [
       'BTC-USDT', 'ETH-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'SHIB-USDT', 'MATIC-USDT', 'AVAX-USDT',
       'DOT-USDT', 'ATOM-USDT', 'NEAR-USDT', 'ALGO-USDT', 'UNI-USDT', 'AAVE-USDT', 'CRV-USDT', 'MKR-USDT', 'COMP-USDT',
@@ -200,7 +200,7 @@ export const EXCHANGES = [
   },
   {
     name: 'Bitmart',
-    api: 'https://api.bitmart.com/v2/ticker?symbol=',
+    api: 'https://api-cloud.bitmart.com/v2/ticker?symbol=',
     symbols: [
       'BTC-USDT', 'ETH-USDT', 'ADA-USDT', 'XRP-USDT', 'SOL-USDT', 'DOGE-USDT', 'SHIB-USDT', 'ARB-USDT', 'OP-USDT',
       'MATIC-USDT', 'AVAX-USDT', 'DOT-USDT', 'ATOM-USDT', 'NEAR-USDT', 'ALGO-USDT', 'UNI-USDT', 'AAVE-USDT',
